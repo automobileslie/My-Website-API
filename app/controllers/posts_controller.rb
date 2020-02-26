@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
     def index 
         posts=Post.all
-        render json: posts, only: [:title, :description, :id]
+        render json: posts
     end
 
 end
