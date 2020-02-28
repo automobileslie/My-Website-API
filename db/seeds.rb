@@ -17,8 +17,9 @@ par_three_for_six=Paragraph.create(post_id: post_six.id, description: " ADD SCRE
 
 par_four_for_six=Paragraph.create(post_id: post_six.id, description: "While that kind of greeting may raise interesting existential questions, it is not very friendly.")
 
-par_five_for_six=Paragraph.create(post_id: post_six.id, description: "National Parks Trip Planning App
-The app I am making fetches from the National Park Services API on a Ruby on Rails backend in order to display a list of different parks using React on the frontend. Users can expand any of the parks on the list to get more information about them. They can click on a link to go to a National Park Services show-page or to get directions. There is a button for adding a park to your collection to help you track places you might like to go to. I am thinking of adding a feature to organize a user's park collection into long, middle, and short-term goals, places you might want to go to sooner rather than later and other places that it might take you awhile to make the time to visit. And I would like to have a text-box for each park in a user's collection for note-taking purposes.")
+par_five_for_six=Paragraph.create(post_id: post_six.id, description: "National Parks Trip Planning App /heading")
+
+an_extra_par_for_six=Paragraph.create(post_id: post_six.id, description: "The app I am making fetches from the National Park Services API on a Ruby on Rails backend in order to display a list of different parks using React on the frontend. Users can expand any of the parks on the list to get more information about them. They can click on a link to go to a National Park Services show-page or to get directions. There is a button for adding a park to your collection to help you track places you might like to go to. I am thinking of adding a feature to organize a user's park collection into long, middle, and short-term goals, places you might want to go to sooner rather than later and other places that it might take you awhile to make the time to visit. And I would like to have a text-box for each park in a user's collection for note-taking purposes.")
 
 par_six_for_six=Paragraph.create(post_id: post_six.id, description: "While it hasn't been scientifically proven that adding a park to your collection effectively motivates you to go there, it doesn't hurt to try. For example, maybe I will eventually go here:")
 
@@ -26,129 +27,154 @@ par_seven_for_six=Paragraph.create(post_id: post_six.id, description: " ADD SCRE
 
 par_eight_for_six=Paragraph.create(post_id: post_six.id, description: "ADD SCREENSHOT HERE")
 
-par_nine_for_six=Paragraph.create(post_id: post_six.id, description: "In addition to lectures from the last module I was in (https://github.com/learn-co-students/nyc-dumbo-web-100719/tree/master/43-jwt-auth/) and work that I did with with Guligena Aierken for a group project (https://github.com/GAierken/Flatiron-Shopping-Frontend and https://github.com/GAierken/Flatiron-Shopping-Backend), I also got help from a couple of sources on the internet when I was trying to understand how local storage works:")
+par_nine_for_six=Paragraph.create(post_id: post_six.id, description: "In addition to lectures from the last module I was in  and work that I did with with Guligena Aierken for a group project, I also got help from a couple of sources on the internet when I was trying to understand how local storage works:")
+
+extra_par_forsix=Paragraph.create(post_id: post_six.id, description: "https://github.com/learn-co-students/nyc-dumbo-web-100719/tree/master/43-jwt-auth/ /anchor")
+
+another_extra_par_forsix=Paragraph.create(post_id: post_six.id, description: "https://github.com/GAierken/Flatiron-Shopping-Frontend /anchor")
 
 par_ten_for_six=Paragraph.create(post_id: post_six.id, description: " ADD VIDEO HERE")
 
 par_eleven_for_six=Paragraph.create(post_id: post_six.id, description: "ComponentDidMount
 The first time that localStorage comes into play in my app is when the component mounts. A fetch happens to load the parks from the API, and the user id, username, park collection, and token are all set to the values that are stored in local storage. That is so that if you leave the app, when you come back and the page reloads everything that was set when you logged in is not lost. The park collection is parsed when it is retrieved from storage, because localStorage only stores strings, and parsing it turns it back into an array. This is important, because it makes the data easier to iterate over for different purposes later on (for example to map and filter information).")
 
-par_twelve_for_six=Paragraph.create(post_id: post_six.id, description: "class App extends React.Component {
-    state={
-    parks: [],
-    parkClickedOn: [],
-    isAParkExpanded: false,
-    parkCollection: [],
-    userId: null,
-    username: "",
-    token: null
-    }
-    componentDidMount=()=>{
-    fetch('http://localhost:3000/parks')
-    .then(r => r.json())
-    .then(parks => {
-    let parkCollectionParsed= JSON.parse(localStorage.getItem('theParkCollection'))
-    this.setState({
-    parks: parks.data,
-    token: localStorage.token,
-    userId: localStorage.userId,
-    username: localStorage.username,
-    parkCollection: parkCollectionParsed
-    })
-    })
+par_twelve_for_six=Paragraph.create(post_id: post_six.id, description: "
+class App extends React.Component { /n
+
+    state={ /n
+
+    parks: [], /n
+
+    parkClickedOn: [], /n
+
+    isAParkExpanded: false, /n
+
+    parkCollection: [], /n
+
+    userId: null, /n
+
+    username: "", /n
+
+    token: null /n
+
+    } /n
+    componentDidMount=()=>{ /n
+    fetch('http://localhost:3000/parks') /n
+    .then(r => r.json()) /n
+    .then(parks => { /n
+    let parkCollectionParsed= /n 
+    JSON.parse(localStorage.getItem('theParkCollection')) /n
+    this.setState({ /n
+    parks: parks.data, /n
+    token: localStorage.token, /n
+    userId: localStorage.userId, /n
+    username: localStorage.username, /n
+    parkCollection: parkCollectionParsed /n
+    }) /n
+    }) /n
     }")
 
-par_thirteen_for_six=Paragraph.create(post_id: post_six.id, description: "Logging In
-The second time localStorage is set is when the user logs in. Here state is also set so that the DOM changes, and values are stored in localStorage so that if you leave the page they will still be there (otherwise whatever the values are that are set in componentDidMount will be there instead). These are values that you do not have access to until login, so that is why they are not set in componentDidMount - parts of the app can be accessed without logging in (such as the list of parks). After the page re-renders due to a change of state whatever values you are setting at the time of login are lost until you log out and log back in again. Unless you save to localStorage! Then there are less hoops to jump through to get what you want. Depending how much excitement you like in your life or how unnecessarily difficult you prefer for things to be, that may be a good thing.")
+par_thirteen_for_six=Paragraph.create(post_id: post_six.id, description: "Logging In /heading")
+another_extra_par_for_six=Paragraph.create(post_id: post_six.id, description:"The second time localStorage is set is when the user logs in. Here state is also set so that the DOM changes, and values are stored in localStorage so that if you leave the page they will still be there (otherwise whatever the values are that are set in componentDidMount will be there instead). These are values that you do not have access to until login, so that is why they are not set in componentDidMount - parts of the app can be accessed without logging in (such as the list of parks). After the page re-renders due to a change of state whatever values you are setting at the time of login are lost until you log out and log back in again. Unless you save to localStorage! Then there are less hoops to jump through to get what you want. Depending how much excitement you like in your life or how unnecessarily difficult you prefer for things to be, that may be a good thing.")
 
-par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setToken = (token, id) => {
-    localStorage.token = token;
-    localStorage.userId = id;
-    fetch(`http://localhost:3000/users/${id}`, {
-    headers: {
-    'Authorization': token
-    }
-    })
-    .then(r => r.json())
-    .then(user => {
-    this.setState({
-    username: user.username,
-    token: token,
-    userId: id,
-    parkCollection: user.park_collections
-    })
-    localStorage.setItem('theParkCollection', JSON.stringify(user.park_collections))
-    let the_username= user.username
-    localStorage.setItem('username', the_username)
+par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "
+    setToken = (token, id) => { /n
+    localStorage.token = token; /n
+    localStorage.userId = id; /n
+    fetch(`http://localhost:3000/users/${id}`, { /n
+    headers: { /n
+    'Authorization': token /n
+    } /n
+    }) /n
+    .then(r => r.json()) /n
+    .then(user => { /n
+    this.setState({ /n
+    username: user.username, /n
+    token: token, /n
+    userId: id, /n
+    parkCollection: user.park_collections /n
+    }) /n
+    localStorage.setItem('theParkCollection', /n
+    JSON.stringify(user.park_collections)) /n
+    let the_username= user.username /n
+    localStorage.setItem('username', the_username) /n
     })
     }")
 
     par_fifteen_for_six=Paragraph.create(post_id: post_six.id, description: "When using localStorage.setItem(), the first argument is a name for what you are storing - it is like naming a variable. The second argument is the value for it. Then, when you are using localStorage.getItem(), the argument in parentheses is the name it was given before.")
 
-    par_sixteen_for_six=Paragraph.create(post_id: post_six.id, description: "Logging Out
-    LocalStorage has to be cleared when a user logs out if you don't want information such as the username and a user's collection of National Parks to linger. The MDN documentation says that localStorage can be cleared with localStorage.clear(), but below I used .removeItem() for each piece of information.")
+    par_sixteen_for_six=Paragraph.create(post_id: post_six.id, description: "Logging Out /heading")
+    another_extra_paragraph_for_six=Paragraph.create(post_id: post_six.id, description:"LocalStorage has to be cleared when a user logs out if you don't want information such as the username and a user's collection of National Parks to linger. The MDN documentation says that localStorage can be cleared with localStorage.clear(), but below I used .removeItem() for each piece of information.")
 
-    par_seventeen_for_six=Paragraph.create(post_id: post_six.id, description: "logOut=()=>{
-        localStorage.removeItem('userId')
-        localStorage.removeItem('token')
-        localStorage.removeItem('username')
-        localStorage.removeItem('theParkCollection')
-        localStorage.removeItem('parkCollectionForDisplay')
-        this.setState({
-        userId: null,
-        token: null,
-        username: '',
-        parkCollection: [],
+    par_seventeen_for_six=Paragraph.create(post_id: post_six.id, description: "
+        logOut=()=>{ /n
+        localStorage.removeItem('userId') /n
+        localStorage.removeItem('token') /n
+        localStorage.removeItem('username') /n
+        localStorage.removeItem('theParkCollection') /n
+        localStorage.removeItem('parkCollectionForDisplay') /n
+        this.setState({ /n
+        userId: null, /n
+        token: null, /n
+        username: '', /n
+        parkCollection: [], /n
         })
         }")
 
-    par_eighteen_for_six=Paragraph.create(post_id: post_six.id, description: "Everything Between the Beginning and the End
-    In between logging in and logging out, a lot of things can happen! Or, at least a couple things!")
+    par_eighteen_for_six=Paragraph.create(post_id: post_six.id, description: "Everything Between the Beginning and the End /heading")
+    an_extra_paragraph_for_six=Paragraph.create(post_id: post_six.id, description: "In between logging in and logging out, a lot of things can happen! Or, at least a couple things!")
 
     par_nineteen_for_six=Paragraph.create(post_id: post_six.id, description: " ADD VIDEO HERE")
 
     par_twenty_for_six=Paragraph.create(post_id: post_six.id, description: "Users can add or delete a park from their collection, and storage and state are set when that happens, in addition to the data being posted to the back end. LocalStorage has to be reset to make sure that if users leave the application without logging out their collection will reflect the changes they made when they come back.")
 
-    par_twentyone_for_six=Paragraph.create(post_id: post_six.id, description: "addToParkCollection=(park)=> {
-        fetch('http://localhost:3000/park_collections', {
-        method: 'POST',
-        headers: {
-        'Content-type': 'application/json',
-        'Accepts': 'application/json'
-        },
-        body: JSON.stringify({
-        user_id: this.state.userId,
-        park_id: park.id
-        })
-        })
-        .then(r=>r.json())
-        .then(theParkCollection => {
-        let thisParkCollection= [...this.state.parkCollection, theParkCollection]
-        localStorage.setItem('theParkCollection', JSON.stringify(thisParkCollection))
-        this.setState({
-        parkCollection: thisParkCollection
-        })
+    par_twentyone_for_six=Paragraph.create(post_id: post_six.id, description: "
+        addToParkCollection=(park)=> { /n
+        fetch('http://localhost:3000/park_collections', { /n
+        method: 'POST', /n
+        headers: { /n
+        'Content-type': 'application/json', /n
+        'Accepts': 'application/json' /n
+        }, /n
+        body: JSON.stringify({ /n
+        user_id: this.state.userId, /n
+        park_id: park.id /n
+        }) /n
+        }) /n
+        .then(r=>r.json()) /n
+        .then(theParkCollection => { /n
+        let thisParkCollection= /n
+        [...this.state.parkCollection, theParkCollection] /n
+        localStorage.setItem('theParkCollection', /n
+        JSON.stringify(thisParkCollection)) /n
+        this.setState({ /n
+        parkCollection: thisParkCollection /n
+        }) /n
         })
         }")
 
     par_twentytwo_for_six=Paragraph.create(post_id: post_six.id, description: "Something similar happens when the delete button is pushed. Here I filter to return a new array without the deleted park in it for the purpose of re-setting state. ParkCollection is an array of collections that are basically instances of a user having a park. They have an id, the user_id, and the park_id as attributes. A user has_many park_collections on the backend, and a park_collection belongs to one user. On the frontend, the array of collections is what will display as one collection of parks. Since only the park_id (not the park's name or description, for example) are stored in the park_collection, work has to be done to iterate through the array of parks that are fetched from the backend to pull out more information about the parks that belong to a user. Below, when I am using the .find() method, I am dealing with making a conversion between the park that is passed in as an argument to the deleteFromCollection function (which has information such as the name, description, url, id, etc. of the park) and the park_collections in parkCollection, which only have the id of the collection, the park_id, and the user_id. I need the id of the collection for specifying the url where the delete fetch has to be sent to effectively destroy my association with any given park.")
 
-    par_twentythree_for_six=Paragraph.create(post_id: post_six.id, description: "deleteFromCollection=(park)=>{
-        let newParkCollectionArray= this.state.parkCollection.filter(the_park=>{
-        return the_park.park_id !== park.id
-        })
-        let thisParkCollection= this.state.parkCollection.find(this_park_collection=>{
-        return this_park_collection.park_id === park.id
-        })
-        let parkCollectionsId= thisParkCollection.id
-        fetch(`http://localhost:3000/park_collections/${parkCollectionsId}`, {
-        method: 'DELETE'})
-        .then(r=>r.json())
-        .then(parkCollections =>{
-        this.setState({
-        parkCollection: newParkCollectionArray
-        })
-        localStorage.setItem('theParkCollection', JSON.stringify(newParkCollectionArray))
+    par_twentythree_for_six=Paragraph.create(post_id: post_six.id, description: "
+        deleteFromCollection=(park)=>{ /n
+        let newParkCollectionArray= /n
+        this.state.parkCollection.filter(the_park=>{ /n
+        return the_park.park_id !== park.id /n
+        }) /n
+        let thisParkCollection= /n
+        this.state.parkCollection.find(this_park_collection=>{ /n
+        return this_park_collection.park_id === park.id /n
+        }) /n
+        let parkCollectionsId= thisParkCollection.id /n
+        fetch(`http://localhost:3000/park_collections/${parkCollectionsId}`, { /n
+        method: 'DELETE'}) /n
+        .then(r=>r.json()) /n
+        .then(parkCollections =>{ /n
+        this.setState({ /n
+        parkCollection: newParkCollectionArray /n
+        }) /n
+        localStorage.setItem('theParkCollection', /n
+        JSON.stringify(newParkCollectionArray)) /n
         })
         }")
 
@@ -161,48 +187,55 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_three_for_five=Paragraph.create(post_id: post_five.id, description: "Below are a few images of the main page of the application:")
     par_four_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT SCREEN SHOT")
     par_five_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT SCREEN SHOT")
-    par_six_for_five=Paragraph.create(post_id: post_five.id, description: "Something that was enjoyable about building this app at the beginning was creating my own API for the first time with images of plants and information about them from places that I like including seedsavers.org, the Brooklyn Botanic Garden, the New York Botanical Garden, and Golden Earthworm Organic Farm. The Farmer's Almanac on-line also helped me to fill in some of the gaps, and a few of the quotes that I used as plant information are from the on-line version of the Oxford English Dictionary, with access provided by the New York Public Library. I would also like to give a shout out to Ruben Vallejo (https://medium.com/@rv.results) for explaining some of the fundamentals of CSS to me and to Gene Grady (https://medium.com/@grady.gene.thomas) for helping me to understand how to set up routes for the application.")
+    par_six_for_five=Paragraph.create(post_id: post_five.id, description: "Something that was enjoyable about building this app at the beginning was creating my own API for the first time with images of plants and information about them from places that I like including seedsavers.org, the Brooklyn Botanic Garden, the New York Botanical Garden, and Golden Earthworm Organic Farm. The Farmer's Almanac on-line also helped me to fill in some of the gaps, and a few of the quotes that I used as plant information are from the on-line version of the Oxford English Dictionary, with access provided by the New York Public Library. I would also like to give a shout out to Ruben Vallejo for explaining some of the fundamentals of CSS to me and to Gene Grady for helping me to understand how to set up routes for the application.")
+    extra_par_for_five=Paragraph.create(post_id: post_five.id, description: "https://medium.com/@rv.results /anchor")
+    extra_par_for_five=Paragraph.create(post_id: post_five.id, description: "https://medium.com/@grady.gene.thomas /anchor")
     par_seven_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT SCREEN SHOT")
     par_eight_for_five=Paragraph.create(post_id: post_five.id, description: "In order to display pictures under Featured Plant I added an array to the state on the parent App.js component called pictureClickedOn, and to display photographs of plants in Your Garden I added the array selectedPlants. Below is the code for setting the state on the initial page load, with the plants being fetched from the backend in the componentDidMount method. The selectedPlants and pictureClickedOn arrays are empty until a user selects a plant to be featured or added to their garden.")
     par_nine_for_five=Paragraph.create(post_id: post_five.id, description: 
 
-        "constructor(){
-        super();
-        this.state = {
-        plants: [],
-        selectedPlants: [],
-        pictureClickedOn: [],
-        catButtonClicked: false
-        }
-        }
+        "constructor(){ /n
+        super(); /n
+        this.state = { /n
+        plants: [], /n
+        selectedPlants: [], /n
+        pictureClickedOn: [], /n
+        catButtonClicked: false /n
+        } /n
+        } /n
         
-        componentDidMount= () => {
-        fetch('http://localhost:3000/plants')
-        .then(r => r.json())
-        .then(plantsArray => {
-        this.setState({
-        plants: plantsArray,
-        })
-        })
+        componentDidMount= () => { /n
+        fetch('http://localhost:3000/plants') /n
+        .then(r => r.json()) /n
+        .then(plantsArray => { /n
+        this.setState({ /n
+        plants: plantsArray, /n
+        }) /n
+        }) /n
         }
         ")
 
     par_ten_for_five=Paragraph.create(post_id: post_five.id, description: "Adding arrays for the selectedPlants and pictureClickedOn allowed me to grab one plant from the plant selection to be featured and several plants from the choice of plants to be added to a garden. In the current state of the application, Your Garden and the featured plant do not persist, but that is something that eventually I would like to change.")
     par_eleven_for_five=Paragraph.create(post_id: post_five.id, description: "Since pictures can appear in three places on the page, I was running into issues when a plant was edited or deleted. The problem I had was that though doing a fetch to edit or delete a plant allowed me to update the plants array on the backend and front end, the selectedPlants and pictureClickedOn arrays were not automatically updating along with it. In order to fix this, I had to set the state for all of the arrays. This is the way I handled the delete action.")
-    par_twelve_for_five=Paragraph.create(post_id: post_five.id, description: "deleteOnClick= (plant) => {
-        const theUpdatedGarden= this.state.selectedPlants.filter(the_clicked_plant => the_clicked_plant.id !== plant.id);
-        const plantsId= this.state.pictureClickedOn.id
-        const theUpdatedFeaturedPlant= plantsId === plant.id ? [] : this.state.pictureClickedOn;
-        fetch(`http://localhost:3000/plants/${plant.id}`, {
-        method: 'DELETE'
-        })
-        .then(r => r.json())
-        .then((newArray) => {
-        this.setState({
+    par_twelve_for_five=Paragraph.create(post_id: post_five.id, description: "
+        deleteOnClick= (plant) => { /n
+        const theUpdatedGarden= /n
+        this.state.selectedPlants.filter(the_clicked_plant => { /n
+            the_clicked_plant.id !== plant.id}); /n
+        const plantsId= this.state.pictureClickedOn.id /n
+        const theUpdatedFeaturedPlant= /n
+        plantsId === plant.id ? [] : /n
+        this.state.pictureClickedOn; /n
+        fetch(`http://localhost:3000/plants/${plant.id}`, { /n
+        method: 'DELETE' /n
+        }) /n
+        .then(r => r.json()) /n
+        .then((newArray) => { /n
+        this.setState({ /n
         plants: newArray,
-        pictureClickedOn: theUpdatedFeaturedPlant,
-        selectedPlants: theUpdatedGarden
-        })
+        pictureClickedOn: theUpdatedFeaturedPlant, /n
+        selectedPlants: theUpdatedGarden /n
+        }) /n
         })
         }")
     par_thirteen_for_five=Paragraph.create(post_id: post_five.id, description: "The deleteOnClick method was passed down as props from App.js to the great-grandchild component that was rendering the plant image and name to the page under the Plant Selection heading along with the two buttons to delete a plant or add it to your garden. The plant being passed in as an argument in deleteOnClick= (plant) on App.js was being passed up from the great grand-child component in a callback function to let App.js know which plant's delete button had been clicked on. Plant is the instance of a plant, and I narrowed it down to plant.id to identify it for removal from the arrays.")
@@ -211,35 +244,42 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_sixteen_for_five=Paragraph.create(post_id: post_five.id, description: "The updatedFeaturedPlant constant is set equal to the return value of a ternary expression. The first condition of the ternary is indicating that if the id of the instance of the plant that has been passed up is equal to the id of the plant in the pictureClickedOn array (in other words if the plant being deleted is the plant also currently being featured), then the pictureClickedOn array should now be empty (and nothing should display to the page in the section under the Featured Plant heading). Otherwise, if the featured plant is not the one being deleted it should remain where it is and be unaffected.")
     par_seventeen_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT LINK")
     par_eighteen_for_five=Paragraph.create(post_id: post_five.id, description: "The updateSubmit function was similar, but it required me to remove the plant that was being updated from the selectedPlants array before then using a spread operator to add the altered plant back into the array. The result was that I could alter the plant in Your Garden without duplication and without affecting the other plants in the garden. Below is my updateSubmit function, which runs when the submit button for the edit featured plant form is clicked on.")
-    par_nineteen_for_five=Paragraph.create(post_id: post_five.id, description: "updateSubmit= (plant) => {
-        const theUpdatedName= plant.name
-        const theUpdatedImg= plant.img
-        const theUpdatedPlantInformation= plant.plant_information
-        const thePlants= this.state.selectedPlants.filter(the_plant => the_plant.id !== plant.id)
-        const gardenPlants= this.state.selectedPlants.map(plant => {
-        return plant.id
-        })
-        const gardenUpdate=  gardenPlants.includes(plant.id) ? [...thePlants, plant] : this.state.selectedPlants
-        fetch(`http://localhost:3000/plants/${this.state.pictureClickedOn.id}`, {
-        method: 'PATCH',
-        headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-        name: theUpdatedName,
-        img: theUpdatedImg,
-        plant_information: theUpdatedPlantInformation
-        })
-        })
-        .then(r => r.json())
-        .then((updatedPlants) => {
-        this.setState({
-        plants: updatedPlants,
-        selectedPlants: gardenUpdate,
-        pictureClickedOn: plant
-        })
-        })
+    par_nineteen_for_five=Paragraph.create(post_id: post_five.id, description: "
+        updateSubmit= (plant) => { /n
+        const theUpdatedName= plant.name /n
+        const theUpdatedImg= plant.img /n
+        const theUpdatedPlantInformation= plant.plant_information /n
+        const thePlants= /n
+        this.state.selectedPlants.filter(the_plant => { /n
+        the_plant.id !== plant.id}) /n
+        const gardenPlants= /n
+        this.state.selectedPlants.map(plant => { /n
+        return plant.id /n
+        }) /n
+        const gardenUpdate=  /n
+        gardenPlants.includes(plant.id) ? /n
+        [...thePlants, plant] : /n
+        this.state.selectedPlants /n
+        fetch(`http://localhost:3000/plants/${this.state.pictureClickedOn.id}`, { /n
+        method: 'PATCH', /n
+        headers: { /n
+        'Content-Type': 'application/json', /n
+        'Accept': 'application/json' /n
+        }, /n
+        body: JSON.stringify({ /n
+        name: theUpdatedName, /n
+        img: theUpdatedImg, /n
+        plant_information: theUpdatedPlantInformation /n
+        }) /n
+        }) /n
+        .then(r => r.json()) /n
+        .then((updatedPlants) => { /n
+        this.setState({ /n
+        plants: updatedPlants, /n
+        selectedPlants: gardenUpdate, /n
+        pictureClickedOn: plant /n
+        }) /n
+        }) 
         }")
     par_twenty_for_five=Paragraph.create(post_id: post_five.id, description: "I like this example of the spread operator from MDN:")
     par_twentyone_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT SCREEN SHOT")
@@ -251,37 +291,47 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_twentyseven_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT SCREEN SHOT")
     par_twentyeight_for_five=Paragraph.create(post_id: post_five.id, description: "insert PHOTO")
     par_twentynine_for_five=Paragraph.create(post_id: post_five.id, description: "I was happy to have them as visitors, but I didn't want them to dominate the garden for too long.* So, I created two functions, one for replacing the plant image url with a cat image url by setting state (but not persisting this change to the backend, so that another way of chasing the cats away would be to just refresh the page) and another for fetching the plant information from the backend again, just as I did in componentDidMount, and setting state so that the plant images would once again be displayed. A third function toggles between these two functions depending on whether the catButtonClicked array in state is true or false.")
-    par_thirty_for_five=Paragraph.create(post_id: post_five.id, description: "changeToCats= () => {
-        const toCats= this.state.plants.map(plant => {
-        return {name: plant.name, img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', plant_information: plant.plant_information, id: plant.id}
-        })
-        const gardenCats= this.state.selectedPlants.map(plant => {
-        return {name: plant.name, img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', plant_information: plant.plant_information, id: plant.id}
-        })
-        this.setState({
-        plants: toCats,
-        selectedPlants: gardenCats,
-        pictureClickedOn: [],
-        catButtonClicked: true
-        })
-        }
-        changeBacktoPlants= () => {
-        fetch('http://localhost:3000/plants')
-        .then(r => r.json())
-        .then(plantsArray => {
-        this.setState({
-        plants: plantsArray,
-        selectedPlants: [],
-        catButtonClicked: false
-        })
-        })
-        }
-        toggleCatButton= () => {
-        return !this.state.catButtonClicked ? this.changeToCats() : this.changeBacktoPlants()
+    par_thirty_for_five=Paragraph.create(post_id: post_five.id, description: "
+        changeToCats= () => { /n
+        const toCats= this.state.plants.map(plant => { /n
+        return {name: plant.name, /n
+        img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', /n
+        plant_information: plant.plant_information, /n
+        id: plant.id} /n
+        }) /n
+        const gardenCats= /n
+        this.state.selectedPlants.map(plant => { /n
+        return {name: plant.name, /n
+        img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', /n
+        plant_information: plant.plant_information, /n
+        id: plant.id} /n
+        }) /n
+        this.setState({ /n
+        plants: toCats, /n
+        selectedPlants: gardenCats, /n
+        pictureClickedOn: [], /n
+        catButtonClicked: true /n
+        }) /n
+        } /n
+        changeBacktoPlants= () => { /n
+        fetch('http://localhost:3000/plants') /n
+        .then(r => r.json()) /n
+        .then(plantsArray => { /n
+        this.setState({ /n
+        plants: plantsArray, /n
+        selectedPlants: [], /n
+        catButtonClicked: false /n
+        }) /n
+        }) /n
+        } /n
+        toggleCatButton= () => { /n
+        return !this.state.catButtonClicked ? /n
+        this.changeToCats() : this.changeBacktoPlants() /n
         }")
     par_thirtyone_for_five=Paragraph.create(post_id: post_five.id, description: "The toggleCatButton function was passed down as props to the NavBar.js component and is triggered as an onClick function when the button is pressed. This is in the render at the bottom of the component.")
-    par_thirtytwo_for_five=Paragraph.create(post_id: post_five.id, description: "{this.props.catButtonClicked ?
-    <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Cats into Plants</button>
+    par_thirtytwo_for_five=Paragraph.create(post_id: post_five.id, description: "
+    {this.props.catButtonClicked ? /n
+    <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Cats into Plants</button> /n
     : <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Plants into Cats</button>}")
     par_thirtythree_for_five=Paragraph.create(post_id: post_five.id, description: "There is a ternary expression to indicate which button should display, one of them with the text being Turn Cats into Plants, the other Turn Plants into Cats. The inner text on the button is the only difference between the two. They are governed by the same function.")
     par_thirtyfour_for_five=Paragraph.create(post_id: post_five.id, description: "INSERT LINK")
@@ -292,7 +342,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     post_four=Post.create(title: "Getting the Monsters Under Control in a Single-Page Application")
 
     par_one_for_four=Paragraph.create(post_id: post_four.id, description: "Last week I learned a lot while working on the Monsters Lab on learn.co. While I am still figuring out how to meet some of the deliverables, I thought I would post about the things I have managed to do with it so far.")
-    par_two_for_four=Paragraph.create(post_id: post_four.id, description: "https://learn.co/tracks/web-development-immersive-3-1-module-three/classroom-materials/additional-practice/monsters")
+    par_two_for_four=Paragraph.create(post_id: post_four.id, description: "https://learn.co/tracks/web-development-immersive-3-1-module-three/classroom-materials/additional-practice/monsters /anchor")
     par_three_for_four=Paragraph.create(post_id: post_four.id, description: "The lab asks us to fetch from a json file to display information about the first fifty monsters in the database on the first page. There is a backwards and forwards arrow at the bottom of the page, and when a user clicks the forward button the next fifty monsters should be displayed. A user should be able to scroll backwards and forwards through the large set of monsters this way. (It would also be helpful for the person testing the code to not have to scroll all the way to the bottom of the page to see what is being displayed. That is a lot of monsters to wade through!) We are also asked to include a form so that users can generate their own monsters (sometimes we are our own worst enemy).")
     par_four_for_four=Paragraph.create(post_id: post_four.id, description: "INSERT GIF")
     par_five_for_four=Paragraph.create(post_id: post_four.id, description: "INSERT GIF")
@@ -300,41 +350,44 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_seven_for_four=Paragraph.create(post_id: post_four.id, description: "INSERT SCREEN SHOT")
     par_eight_for_four=Paragraph.create(post_id: post_four.id, description: "When a user clicks on the Update this Monster button a form is generated like so, and when it is submitted the monster is updated in the database and on the page.")
     par_nine_for_four=Paragraph.create(post_id: post_four.id, description: "INSERT SCREEN SHOT")
-    par_ten_for_four=Paragraph.create(post_id: post_four.id, description: "fetch('http://localhost:3000/monsters')
-    .then(r => r.json())
-    .then(monstersArray => {
-    const theMonstersArray= monstersArray
-    let i=0
-    let monsterSet= theMonstersArray.slice(i, i+50)
-    let firstSet= monsterSet.forEach(showAllMonsters)
+    par_ten_for_four=Paragraph.create(post_id: post_four.id, description: "
+    fetch('http://localhost:3000/monsters') /n
+    .then(r => r.json()) /n
+    .then(monstersArray => { /n
+    const theMonstersArray= monstersArray /n
+    let i=0 /n
+    let monsterSet= theMonstersArray.slice(i, i+50) /n
+    let firstSet= monsterSet.forEach(showAllMonsters) /n
     })")
     par_eleven_for_four=Paragraph.create(post_id: post_four.id, description: "This makes it so that only the first fifty monsters are displayed when the DOM content loads. A slice takes two arguments, the index number of where the slice should start and the index number of where the slice should end. The second argument is not inclusive, and index numbers begin at zero for the first element in an array.")
     par_twelve_for_four=Paragraph.create(post_id: post_four.id, description: "INSERT LINK")
     par_thirteen_for_four=Paragraph.create(post_id: post_four.id, description: "To make the forward button at the bottom of the page functional, the following worked (to an extent!):")
     par_fouteen_for_four=Paragraph.create(post_id: post_four.id, description: "
-    let forwardButton= document.getElementById('forward')
-    forwardButton.addEventListener('click', (event) => {
-    i+=50
-    let nextFifty= monstersArray.slice(i, i+50)
-    nextFifty.forEach(showAllMonsters)
+    let forwardButton= document.getElementById('forward') /n
+    forwardButton.addEventListener('click', (event) => { /n
+    i+=50 /n
+    let nextFifty= monstersArray.slice(i, i+50) /n
+    nextFifty.forEach(showAllMonsters) /n
     })
     ")
     par_fifteen_for_four=Paragraph.create(post_id: post_four.id, description: "I added an event listener to the forward button so that when it is clicked, the next slice in the monstersArray is displayed. However, the issue is that the previous fifty monsters are still on the page…and that is too many monsters! I can't fight them all at once. It is too much. I also haven't worked on the backward arrow yet, so unfortunately there is no going back. Unless you refresh the page! Then you will be down to the first fifty again until you become overzealous enough to click the forward button. But this is a single-page application, so I wouldn't advice you to refresh the page to save your life.")
     par_sixteen_for_four=Paragraph.create(post_id: post_four.id, description: "I will keep working on the arrow buttons and will write an update when I manage to make them work the way they are supposed to. In the meantime, I will backtrack a little to explain some of the code that I glossed over above.")
     par_seventeen_for_four=Paragraph.create(post_id: post_four.id, description: "The showAllMonsters function loops through the array of monsters in the database to display the information there in an organized way on the page. Our instructor Eric warned us that using innerHTML could make us unnecessarily over-exposed to harm by all the dangerous people out there on the internet, so I got practice writing things line by line. This is the beginning of that function. We were learning JavaScript, so that is one of the reasons we were not editing the HTML file directly and instead were adding elements to the HTML through a JavaScript file.")
-    par_eighteen_for_four=Paragraph.create(post_id: post_four.id, description: "function showAllMonsters(monsterObj){
-        let aMonsterSpan= document.createElement('span')
-        let aMonsterName= document.createElement('h2')
-        aMonsterName.innerText= monsterObj.name
-        let aMonsterAge= document.createElement('li')
-        aMonsterAge.innerText= `${monsterObj.age} years old`
-        let aMonsterBio= document.createElement('p')
-        aMonsterBio.innerText= `Bio: ${monsterObj.description}`
-        let deleteMonsterButton= document.createElement('button')
-        deleteMonsterButton.innerText='Delete this monster'
-        let updateMonsterButton= document.createElement('button')
-        updateMonsterButton.innerText= 'Update this Monster'
-        aMonsterSpan.append(aMonsterName, aMonsterAge, aMonsterBio, deleteMonsterButton, updateMonsterButton)
+    par_eighteen_for_four=Paragraph.create(post_id: post_four.id, description: "
+        function showAllMonsters(monsterObj){ /n
+        let aMonsterSpan= document.createElement('span') /n
+        let aMonsterName= document.createElement('h2') /n
+        aMonsterName.innerText= monsterObj.name /n
+        let aMonsterAge= document.createElement('li') /n
+        aMonsterAge.innerText= `${monsterObj.age} years old` /n
+        let aMonsterBio= document.createElement('p') /n
+        aMonsterBio.innerText= `Bio: ${monsterObj.description}` /n
+        let deleteMonsterButton= document.createElement('button') /n
+        deleteMonsterButton.innerText='Delete this monster' /n
+        let updateMonsterButton= document.createElement('button') /n
+        updateMonsterButton.innerText= 'Update this Monster' /n
+        aMonsterSpan.append(aMonsterName, aMonsterAge, /n 
+        aMonsterBio, deleteMonsterButton, updateMonsterButton) /n
         theMonsterContainer.append(aMonsterSpan)}")
     par_nineteen_for_four=Paragraph.create(post_id: post_four.id, description: "theMonsterContainer is a div already written in the HTML we were given, and I captured it in a constant earlier on.")
     par_twenty_for_four=Paragraph.create(post_id: post_four.id, description: "const theMonsterContainer= document.getElementById('monster-container')")
@@ -350,7 +403,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_four_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT SCREEN SHOT")
     par_five_for_three=Paragraph.create(post_id: post_three.id, description: "I am going to focus just on the greet function in this blog, as it gave me plenty to think about and work on. In the words of Miracle Legion, 'Just say hello. It means a lot to me.'")
     par_six_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT VIDEO")
-    par_seven_for_three=Paragraph.create(post_id: post_three.id, description: "The Solution I Arrived At")
+    par_seven_for_three=Paragraph.create(post_id: post_three.id, description: "The Solution I Arrived At /heading")
     par_eight_for_three=Paragraph.create(post_id: post_three.id, description: "First, here are two solutions that I eventually arrived at (with some code that I will discuss later commented out):")
     par_nine_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT SCREEN SHOT")
     par_ten_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT SCREEN SHOT")
@@ -358,7 +411,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_twelve_for_three=Paragraph.create(post_id: post_three.id, description: "Before I came to the first solution, I worked on the second one, so the following explains my thought process for that.The parameter the_time would be replaced by an argument like 09:17 or 18:42 (6:42 p.m.) when a user enters the time of day, and this has to be split to remove the colon. It also has to be changed from a string into a number so the if and else statements can be formed with <, >, ≥, etc. operators to indicate what the returned greeting should be for different ranges of time. That is because these operators only work with numbers as far as I know.")
     par_thirteen_for_three=Paragraph.create(post_id: post_three.id, description: "The purpose of the split method is to remove the colon, but it also breaks the argument into two separate strings that are put into an array. For example, for 16:00 the resulting array would be ['16', '00'].")
     par_fouteen_for_three=Paragraph.create(post_id: post_three.id, description: "ParseInt() can then convert the strings into integers if you iterate through each number of the array by their index, for example by doing parseInt(this_time[0]) to get 16, and parseInt(this_time[1]) to get 00. Before I used .parseInt(), I used .concat() to join the two strings in the array (this time without the colon sadly separating them!), which gave me 1600. Then I was able to run that integer through the if/else statements to find the appropriate greeting.")
-    par_fifteen_for_three=Paragraph.create(post_id: post_three.id, description: "Misadventure #1")
+    par_fifteen_for_three=Paragraph.create(post_id: post_three.id, description: "Misadventure #1 /heading")
     par_sixteen_for_three=Paragraph.create(post_id: post_three.id, description: "Now, for some of the discoveries I made before arriving at those solutions!
     One of the mistakes I made was saving the first index and the second index of this_time to separate variables, one for the hour and one for the minutes. I thought that I could handle it that way, but it was a path that led to many misadventures. Below is one attempt to make it work.")
     par_seventeen_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT SCREEN SHOT")
@@ -368,7 +421,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_twentyone_for_three=Paragraph.create(post_id: post_three.id, description: "This leads me to one of my other takeaways from the lab related to .parseInt(). I had not used .parseInt() more than a couple times thus far in my learning process, so the notion of a base or radix mystified me. What I found out about this was that a radix of ten refers to the numeral system based on integers 0–9. When I experimented with this in my console, .parseInt() defaulted to a base of 10 if no argument was given for it - but refer to MDN(link below) or other documentation to get a thorough answer to what happens if you do not specify a radix. I tried changing the base to different values to see what would happen, but I was unable to understand from the output alone how the base resulted in the output it was giving me. Wikipedia gave me a glimpse of the wondrous rabbit-hole that I could have found myself going down if I had had more time to learn about different numeral systems. I encourage you all to take that journey, and I hope to join you there at some point, just not right now.")
     par_twentytwo_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT LINK")
     par_twentythree_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT LINK")
-    par_twentyfour_for_three=Paragraph.create(post_id: post_three.id, description: "Misadventure #2")
+    par_twentyfour_for_three=Paragraph.create(post_id: post_three.id, description: "Misadventure #2 /heading")
     par_twentyfive_for_three=Paragraph.create(post_id: post_three.id, description: "The last couple of things that I reviewed and learned more about thanks to this lab were the importance of variables and the way the .join() method works. Below is the solution I arrived at but without all of the variables in place. When I split the_time, that work was lost without a variable to hold the transformed the_time in, because the .split() method is non-destructive (it does not permanently alter what it operates on). So, none of the following operations and statements in the function work correctly later on if I do not starting saving to variables right away.")
     par_twentysix_for_three=Paragraph.create(post_id: post_three.id, description: "INSERT LINK")
     par_twentyseven_for_three=Paragraph.create(post_id: post_three.id, description: "Lastly, I tried using the .join() method before I used .concat(). I made the mistake of calling .join() instead of .join(''). You can see the different results of using one versus the other below. Also refer to the MDN for more information about ways to use this method.")
@@ -384,7 +437,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_one_for_two=Paragraph.create(post_id: post_two.id, description: "This is my first blog, and it is going to be about the mysterious ways of the split method. I had the chance to learn more about this method while working on a lab called the OO Cash Register Lab during the first module of Flatiron School's Software Engineering program at Access Labs in Brooklyn, NY.* So, I will write about some of my misadventures while completing that lab and what I learned about the split method along the way.")
     par_two_for_two=Paragraph.create(post_id: post_two.id, description: "The prompt asked us to do the following:")
     par_three_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
-    par_four_for_two=Paragraph.create(post_id: post_two.id, description: "https://learn.co/tracks/module-1-web-development-immersive-2-1/object-oriented-ruby/object-s-self/oo-cash-register")
+    par_four_for_two=Paragraph.create(post_id: post_two.id, description: "https://learn.co/tracks/module-1-web-development-immersive-2-1/object-oriented-ruby/object-s-self/oo-cash-register /anchor")
     par_five_for_two=Paragraph.create(post_id: post_two.id, description: "One of the methods I was supposed to write would take parameters of a title of an item, the quantity of the item, and the price of it. It was supposed to update the total price of all items combined in the shopping cart and it was also supposed to add new items to the @items array to keep track of what was in the shopping cart.")
     par_six_for_two=Paragraph.create(post_id: post_two.id, description: "This is the beginning of the code to get you oriented:")
     par_seven_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
@@ -403,7 +456,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_twenty_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
     par_twentyone_for_two=Paragraph.create(post_id: post_two.id, description: "Instead of listing three new books in the cart, I have one big triple book. (Large volumes are not easy to carry around with you to read on the train, so this is a problem!) So, I knew with the help of binding.pry that I needed to find a way to split up the three books that did not currently want to be apart. This would also have to be the case for any quantity of items, not just for the test case of books. It occurred to me thanks to Learn.co's previous lessons that there was a method for that, the split method. Below is Ruby Doc's definition of the split method.")
     par_twentytwo_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
-    par_twentythree_for_two=Paragraph.create(post_id: post_two.id, description: "https://ruby-doc.org/core-2.4.0/String.html#method-i-split")
+    par_twentythree_for_two=Paragraph.create(post_id: post_two.id, description: "https://ruby-doc.org/core-2.4.0/String.html#method-i-split /anchor")
     par_twentyfour_for_two=Paragraph.create(post_id: post_two.id, description: "Ruby Doc gives a number of examples of ways to split a string, and I will discuss a few of them. The problem that I ran into initially after suspecting that I should somehow put the split method to use was that there was nothing to split ['bookbookbook'] by, no punctuation marks and no white space, for example. Just calling .split on the array did nothing (yes, I am sure I tried that!). Using k as a delimiter, which you can try for fun like so:")
     par_twentyfive_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
     par_twentysix_for_two=Paragraph.create(post_id: post_two.id, description: "did this:")
@@ -419,7 +472,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "setTok
     par_thirtysix_for_two=Paragraph.create(post_id: post_two.id, description: "Another example of a delimiter that Ruby Doc gives us that I like, in spite of how ineffectual it would appear to be for the OO Cash Register Lab is:")
     par_thirtyseven_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
     par_thirtyeight_for_two=Paragraph.create(post_id: post_two.id, description: "Here is a link to that song, in case you are interested. Thank you Ruby Doc.")
-    par_thirtynine_for_two=Paragraph.create(post_id: post_two.id, description: "https://www.youtube.com/watch?v=IQNBQI3UDag")
+    par_thirtynine_for_two=Paragraph.create(post_id: post_two.id, description: "https://www.youtube.com/watch?v=IQNBQI3UDag /anchor")
     par_forty_for_two=Paragraph.create(post_id: post_two.id, description: "This was all enough to get me to go back to try to interpolate my way out of the problem before again coming back to kneel at the shrine of the split method. So, I tried to interpolate a comma between the items like this:")
     par_fortyone_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")
     par_fortytwo_for_two=Paragraph.create(post_id: post_two.id, description: "and got this:")
