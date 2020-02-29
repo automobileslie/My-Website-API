@@ -2,12 +2,15 @@ Post.destroy_all
 Paragraph.destroy_all
 Project.destroy_all
 
-
 project_one=Project.create(title: "Plan a Garden", description: "This is an application designed to help users imagine the kind of garden that they would like to create and then start to plan it. The idea for it came from the avid gardening I did last summer and from my appreciation of the community gardens all over New York City." , video: "PlanAGardenVideo", image: "./Images/Azaleas.jpg")
+
 project_two=Project.create(title: "Book and Movie Memory Bank", description: "The Book and Movie Memory Bank was inspired by some of my experiences planning courses when I was a Philosophy instructor and writing essays as a student. Occasionally, I would end up mining my memory when deciding what to teach, trying to remember the name of a film I saw years ago that would be especially relevant for a particular class. Or, as I was writing I would be reminded of an idea from an essay or book and would rack my brain or have to rummage through my notes trying to find the title of it. The Book and Movie Memory Log is a place to store information about films or books that have made an impact on you, that you know you want to remember and may want to return to for various purposes later on." , video: "BookandMovieMemoryBankVideo", image: "./Images/Book_and_Movie_Memory_Bank.jpg")
+
 project_three=Project.create(title:  "National Park Trip Planner", description: "National Parks Trip Planner provides information about national parks in the United States, fetching from the National Park Service API and also linking to the National Park Service website. Users can save parks that they would like to go to or learn more about and take notes on saved parks as they plan a trip. The idea for this application came from my eagerness to get outdoors. I like that National Parks are low-cost and offer educational opportunities about both history and nature.", video: "NationalParksDemo", image: "./Images/United_States.jpg")
 
-post_six=Post.create(title: "Local Storage")
+
+post_six=Post.create(title: "Local Storage in a National Park Trip Planner")
+
 
 par_one_for_six=Paragraph.create(post_id: post_six.id, description: "While working on my final project for Access Labs, I have been learning how to use localStorage so that users can navigate away from an app when they click on an external link and then return without having to log back in or refresh the page. This blog post is about what I have learned so far, particularly about storage that is not as permanent as saving something to the database but not as fleeting as saving something to state and not persisting it. It is a middle ground for keeping things around when you go away for a short while and want them to still be there when you come back. And if you never log out they may stay there for longer than you imagined they would.")
 
@@ -180,7 +183,7 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "
 
     par_twentyfour_for_six=Paragraph.create(post_id: post_six.id, description: "But don't worry, all you have to do is click a button to add the park again if you are having any regrets when it comes to your park planning preferences.")
     
-    post_five=Post.create(title: "Planning a Garden With a Rails API and React")
+    post_five=Post.create(title: "Plan a Garden Application")
 
     par_one_for_five=Paragraph.create(post_id: post_five.id, description: "I have been working on an app for garden planning to help practice using React on the front end with a Ruby on Rails API on the backend. One of the main issues I tackled while doing this project was handling an application that had multiple sources of truth on the front-end, and I got practice using ternary expressions and doing conditional rendering to help deal with this issue.")
     par_two_for_five=Paragraph.create(post_id: post_five.id, description: "Users can currently view the plants that are stored in the database, log a new plant that will post to the backend and render on the frontend, delete a plant from the frontend and backend, add a plant to their garden, remove a plant from their garden, select a plant to be featured (which displays an enlarged image of the plant along with information about it toward the top of the page under the Featured Plant heading), and edit the featured plant. AND they can turn the images of plants into a picture of a cat (Just for fun and to practice creating a toggle button, and because that is what I was asked by my instructors to do during my project review)!")
@@ -497,49 +500,6 @@ par_fourteen_for_six=Paragraph.create(post_id: post_six.id, description: "
     par_sixtyone_for_two=Paragraph.create(post_id: post_two.id, description: "In spite of enjoying discovering that the split method speaks the language of punctuation, it turns out that I could have also achieved the same result by just adding a whitespace to the interpolation and then using white space as the delimiter, like this:")    
     par_sixtytwo_for_two=Paragraph.create(post_id: post_two.id, description: "INSERT SCREEN SHOT")    
     par_sixtythree_for_two=Paragraph.create(post_id: post_two.id, description: "Since it doesn't matter whether you use a punctuation mark or white space to serve as a delimiter, you can rely on your own preferences (or your own whims at the moment) for either punctuated or blank space.")    
-   
-
-
-    post_one=Post.create(title: "")
-
-    par_one_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_two_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_three_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_four_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_five_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_six_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_seven_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_eight_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_nine_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_ten_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_eleven_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twelve_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirteen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_fouteen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_fifteen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_sixteen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_seventeen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_eighteen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_nineteen_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twenty_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentyone_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentytwo_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentythree_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentyfour_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentyfive_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentysix_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentyseven_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentyeight_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_twentynine_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirty_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtyone_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtytwo_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtythree_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtyfour_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtyfive_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtysix_for_one=Paragraph.create(post_id: post_one.id, description: "")
-    par_thirtyseven_for_one=Paragraph.create(post_id: post_one.id, description: "")
-
 
 
 
