@@ -1,5 +1,4 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title
+  attributes :id, :title, :paragraphs
 
-  has_many :paragraphs
 end

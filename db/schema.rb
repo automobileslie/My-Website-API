@@ -15,14 +15,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_002248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "paragraphs", force: :cascade do |t|
-    t.integer "post_id"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
+    t.text "paragraphs"
     t.text "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
