@@ -15,13 +15,16 @@ In the last module, we worked on saving the token and user id to localStorage, b
 While that kind of greeting may raise interesting existential questions, it is not very friendly. newpar,
 National Parks Trip Planning App /heading newpar,
 The app I am making fetches from the National Park Services API on a Ruby on Rails backend in order to display a list of different parks using React on the frontend. Users can expand any of the parks on the list to get more information about them. They can click on a link to go to a National Park Services show-page or to get directions. There is a button for adding a park to your collection to help you track places you might like to go to. I am thinking of adding a feature to organize a user's park collection into long, middle, and short-term goals, places you might want to go to sooner rather than later and other places that it might take you awhile to make the time to visit. And I would like to have a text-box for each park in a user's collection for note-taking purposes. newpar,
-While it hasn't been scientifically proven that adding a park to your collection effectively motivates you to go there, it doesn't hurt to try. For example, maybe I will eventually go here: newpar,
+While it hasn't been scientifically proven that adding a park to your collection effectively motivates you to go there, it doesn't hurt to try. For example, maybe eventually I will go here: newpar,
 ./Images/Belmont_Paul_Women's_Equality.jpg newpar,
 ./Images/Showpage_for_park.jpg newpar, 
 In addition to lectures from the last module I was in  and work that I did with with Guligena Aierken for a group project, I also got help from a couple of sources on the internet when I was trying to understand how local storage works: newpar,
 https://github.com/learn-co-students/nyc-dumbo-web-100719/tree/master/43-jwt-auth/ /anchor newpar,
 https://github.com/GAierken/Flatiron-Shopping-Frontend /anchor newpar,
-ADD VIDEO HERE newpar,
+https://www.kirupa.com/html5/storing_and_retrieving_an_array_from_local_storage.htm /anchor newpar,
+https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage /anchor newpar,
+https://www.youtube.com/embed/AUOzvFzdIk4 newpar,
+
 ComponentDidMount /heading newpar,
 The first time that localStorage comes into play in my app is when the component mounts. A fetch happens to load the parks from the API, and the user id, username, park collection, and token are all set to the values that are stored in local storage. That is so that if you leave the app, when you come back and the page reloads everything that was set when you logged in is not lost. The park collection is parsed when it is retrieved from storage, because localStorage only stores strings, and parsing it turns it back into an array. This is important, because it makes the data easier to iterate over for different purposes later on (for example to map and filter information). newpar,
 class App extends React.Component { /n
@@ -104,7 +107,7 @@ class App extends React.Component { /n
     } newpar,
     Everything Between the Beginning and the End /heading newpar,
     In between logging in and logging out, a lot of things can happen! Or, at least a couple things! newpar,
-    ADD VIDEO HERE newpar,
+    https://www.youtube.com/embed/MznHdJReoeo newpar,
     Users can add or delete a park from their collection, and storage and state are set when that happens, in addition to the data being posted to the back end. LocalStorage has to be reset to make sure that if users leave the application without logging out their collection will reflect the changes they made when they come back. newpar,
     addToParkCollection=(park)=> { /n
         fetch('http://localhost:3000/park_collections', { /n
@@ -212,9 +215,9 @@ class App extends React.Component { /n
 
     The deleteOnClick method was passed down as props from App.js to the great-grandchild component that was rendering the plant image and name to the page under the Plant Selection heading along with the two buttons to delete a plant or add it to your garden. The plant being passed in as an argument in deleteOnClick= (plant) on App.js was being passed up from the great grand-child component in a callback function to let App.js know which plant's delete button had been clicked on. Plant is the instance of a plant, and I narrowed it down to plant.id to identify it for removal from the arrays. newpar,
     The filter method in theUpdatedGarden constant allowed me to remove the plant that had been deleted from the selectedPlants array. Filter is a method that when called on an array creates a new array of items for which whatever condition that is specified is true. In this case, any plant that did not have the id of the plant passed as an argument in deleteOnClick was put into this new array, and that is the value that I set selectedPlants to when I set state. So, when a plant is deleted from Plant Selection, it is also removed from Your Garden, while the other plants currently in the garden remain there. newpar,
-    INSERT LINK newpar,
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter /anchor newpar,
     The updatedFeaturedPlant constant is set equal to the return value of a ternary expression. The first condition of the ternary is indicating that if the id of the instance of the plant that has been passed up is equal to the id of the plant in the pictureClickedOn array (in other words if the plant being deleted is the plant also currently being featured), then the pictureClickedOn array should now be empty (and nothing should display to the page in the section under the Featured Plant heading). Otherwise, if the featured plant is not the one being deleted it should remain where it is and be unaffected. newpar,
-    INSERT LINK newpar,
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator /anchor newpar,
     The updateSubmit function was similar, but it required me to remove the plant that was being updated from the selectedPlants array before then using a spread operator to add the altered plant back into the array. The result was that I could alter the plant in Your Garden without duplication and without affecting the other plants in the garden. Below is my updateSubmit function, which runs when the submit button for the edit featured plant form is clicked on. newpar,
     
     updateSubmit= (plant) => { /n
@@ -255,14 +258,13 @@ class App extends React.Component { /n
     } newpar,
     I like this example of the spread operator from MDN: newpar,
     ./Images/Head_shoulders.jpg newpar,
-    INSERT LINK newpar,
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax /anchor newpar,
     Lastly, the Turn Plants into Cats button on the navigation bar at the top of the page gave me a chance to practice toggling with a button. When a user clicks on the Turn Plants into Cats button, the pictures transform, and the text on the button itself changes from saying Turn Plants into Cats into saying Turn Cats into Plants. If there are any plants in Your Garden, they will also turn into cats. newpar,
     ./Images/Turn_cats_into_plants.jpg newpar,
     ./Images/Plants_to_cats_in_plant_selection.jpg newpar,
     ./Images/Plants_to_cats_in_garden_and_plant_selection.jpg newpar,
     ./Images/Featured_plant.jpg newpar,
-    insert PHOTO newpar,
-    I was happy to have them as visitors, but I didn't want them to dominate the garden for too long.* So, I created two functions, one for replacing the plant image url with a cat image url by setting state (but not persisting this change to the backend, so that another way of chasing the cats away would be to just refresh the page) and another for fetching the plant information from the backend again, just as I did in componentDidMount, and setting state so that the plant images would once again be displayed. A third function toggles between these two functions depending on whether the catButtonClicked array in state is true or false. newpar,
+    I was happy to have them as visitors, but I didn't want them to dominate the garden for too long. So, I created two functions, one for replacing the plant image url with a cat image url by setting state (but not persisting this change to the backend, so that another way of chasing the cats away would be to just refresh the page) and another for fetching the plant information from the backend again, just as I did in componentDidMount, and setting state so that the plant images would once again be displayed. A third function toggles between these two functions depending on whether the catButtonClicked array in state is true or false. newpar,
     changeToCats= () => { /n
     const toCats= this.state.plants.map(plant => { /n
     return {name: plant.name, /n
@@ -306,20 +308,16 @@ class App extends React.Component { /n
     : <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Plants into Cats</button>} newpar,
 
     There is a ternary expression to indicate which button should display, one of them with the text being Turn Cats into Plants, the other Turn Plants into Cats. The inner text on the button is the only difference between the two. They are governed by the same function. newpar,
-    INSERT LINK newpar,
+    https://reactjs.org/docs/conditional-rendering.html /anchor newpar,
     The only drawbacks are that currently when you change the cats back into plants, the plants that were in your garden will be gone. There will also no longer be a featured plant. When I finish working on the application so that users are authenticated and can log in, I will be able to get plants to persist to a user's garden on the backend. Then, less will be lost in the bibbidi bobbidi boo of the cat button magic. But until then, one can go ahead and recreate their garden using the buttons I have provided after the cats have wrecked their havoc. newpar,
-    INSERT VIDEO newpar,
-    *The cat pictures are of my cat James who died last year, so I actually wouldn't want to chase him from the garden! newpar,
+    https://www.youtube.com/embed/iXJvxEHSv5E newpar,
     ")
 
-   
-   
 
     post_three=Post.create(title: "Getting the Monsters Under Control in a Single-Page Application", paragraphs: "Last week I learned a lot while working on the Monsters Lab on learn.co. While I am still figuring out how to meet some of the deliverables, I thought I would post about the things I have managed to do with it so far. newpar,
         https://learn.co/tracks/web-development-immersive-3-1-module-three/classroom-materials/additional-practice/monsters /anchor newpar,
         The lab asks us to fetch from a json file to display information about the first fifty monsters in the database on the first page. There is a backwards and forwards arrow at the bottom of the page, and when a user clicks the forward button the next fifty monsters should be displayed. A user should be able to scroll backwards and forwards through the large set of monsters this way. (It would also be helpful for the person testing the code to not have to scroll all the way to the bottom of the page to see what is being displayed. That is a lot of monsters to wade through!) We are also asked to include a form so that users can generate their own monsters (sometimes we are our own worst enemy). newpar,
-        INSERT GIF newpar,
-        INSERT GIF newpar,
+
         In addition to the above, in order to practice CRUD (create, read, update, delete), I made a delete and update function. Users can delete monsters with the click of a button (if only it were that easy in real life!). Or they can update a monster's name, age, or biography to essentially transform its identity, at least as it exists in the database and on the page. It is important to try to keep your monsters under control in whatever way you can. This is what the beginning of the page looks like. I did not write the bios, but I love them. newpar,
         ./Images/Monsters_lab.jpg newpar,
         When a user clicks on the Update this Monster button a form is generated like so, and when it is submitted the monster is updated in the database and on the page. newpar,
@@ -335,7 +333,7 @@ class App extends React.Component { /n
         }) newpar,
 
        This makes it so that only the first fifty monsters are displayed when the DOM content loads. A slice takes two arguments, the index number of where the slice should start and the index number of where the slice should end. The second argument is not inclusive, and index numbers begin at zero for the first element in an array. newpar,
-        INSERT LINK newpar,
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice /anchor newpar,
         To make the forward button at the bottom of the page functional, the following worked (to an extent!): newpar,
         
         let forwardButton= document.getElementById('forward') /n
@@ -370,7 +368,7 @@ class App extends React.Component { /n
 
         This was one of the first times I had to perform the gymnastics of appending some elements to a span before appending that span to a div. This was good practice for our code challenge later in the week, when the nesting of elements in the HTML was more complex and required more careful planning. newpar,
         After that, I made the forms and event listeners for creating and updating a monster. But I won't include the code for all that, because sometimes you have to fight your own battles. newpar,
-        INSERT VIDEO newpar,
+        https://www.youtube.com/embed/vNuVifA7DSU  newpar,
         ")
 
     
@@ -380,7 +378,6 @@ class App extends React.Component { /n
     The lab also gives us a hint to use the .split() method and parseInt() to process the time entered: newpar,
     ./Images/Note.jpg newpar,
     I am going to focus just on the greet function in this blog, as it gave me plenty to think about and work on. In the words of Miracle Legion, 'Just say hello. It means a lot to me.' newpar,
-    INSERT VIDEO newpar,
     The Solution I Arrived At /heading newpar,
     First, here are two solutions that I eventually arrived at (with some code that I will discuss later commented out): newpar,
     ./Images/Solution.jpg newpar,
@@ -397,18 +394,17 @@ class App extends React.Component { /n
     The first else if statement was where problems were coming in. If I gave a range between 12 and 17 for the hour and did not include the part of the code involving the minutes, then if a user entered 17:12, the function returned Good Afternoon, when it should have returned Good Evening. newpar,
     Though I meant for 'the_minutes <01' to limit only the range of time for the hour of 17, it was read as applying to every hour between 12 and 17. At one point, I believe I got a slight variation of this to work somehow. However, even when it worked in my Chrome DevTools console, in the terminal where I was completing the lab it gave me the intriguing error of 'legacy octal literals are not allowed in strict mode.' It objected to being asked to process 01, or 00, etc. as a number. newpar,
     This leads me to one of my other takeaways from the lab related to .parseInt(). I had not used .parseInt() more than a couple times thus far in my learning process, so the notion of a base or radix mystified me. What I found out about this was that a radix of ten refers to the numeral system based on integers 0–9. When I experimented with this in my console, .parseInt() defaulted to a base of 10 if no argument was given for it - but refer to MDN(link below) or other documentation to get a thorough answer to what happens if you do not specify a radix. I tried changing the base to different values to see what would happen, but I was unable to understand from the output alone how the base resulted in the output it was giving me. Wikipedia gave me a glimpse of the wondrous rabbit-hole that I could have found myself going down if I had had more time to learn about different numeral systems. I encourage you all to take that journey, and I hope to join you there at some point, just not right now. newpar,
-    INSERT LINK newpar,
-    INSERT LINK newpar,
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt /anchor newpar,
+    https://en.wikipedia.org/wiki/Radix /anchor newpar,
     Misadventure #2 /heading newpar,
     The last couple of things that I reviewed and learned more about thanks to this lab were the importance of variables and the way the .join() method works. Below is the solution I arrived at but without all of the variables in place. When I split the_time, that work was lost without a variable to hold the transformed the_time in, because the .split() method is non-destructive (it does not permanently alter what it operates on). So, none of the following operations and statements in the function work correctly later on if I do not starting saving to variables right away. newpar,
     ./Images/wrong_path_for_lab_2.jpg newpar,
     Lastly, I tried using the .join() method before I used .concat(). I made the mistake of calling .join() instead of .join(''). You can see the different results of using one versus the other below. Also refer to the MDN for more information about ways to use this method. newpar,
-    INSERT LINK newpar,
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join /anchor newpar,
     ./Images/wrong_path_3_for_lab.jpg newpar,
     At first I didn't know why .join() was not working, but testing the code in the console allowed me to see what was happening. The .join() method separates the elements that it brings together by a comma unless you specify some other way to join them in one string. 12,00 was the result of using .join() on an argument of 12:00, and this interestingly turned into 12 when I used .parseInt() on it, so people were being told Good Morning all day long. newpar,
-    INSERT VIDEO newpar,
+    https://www.youtube.com/embed/wLDtuhtHTY4 newpar,
     However, .join('') (with no spaces between the quotation marks) resulted in the same string as when I used .concat(), so I could have done that. But when all else is equal, I generally consider it preferable to use methods with the word cat in them. You can decide for yourself. newpar,
-    INSERT GIF newpar,
     ")
 
     post_one=Post.create(title: "The Split Method and the Power of Punctuation", paragraphs: "This is my first blog, and it is going to be about the mysterious ways of the split method. I had the chance to learn more about this method while working on a lab called the OO Cash Register Lab during the first module of Flatiron School's Software Engineering program at Access Labs in Brooklyn, NY. So, I will write about some of my misadventures while completing that lab and what I learned about the split method along the way. newpar,
@@ -467,7 +463,6 @@ class App extends React.Component { /n
     giving me: newpar, 
     ./Images/Solution_result.jpg newpar,   
     I didn't have to add a space after the comma in the title interpolation, because the split method separates the strings in its resulting array according to the conventions of English grammar, or at least the grammar of arrays, with a comma and a space. Also, if I had added a space it would have actually just created other problems. newpar,
-    INSERT SCREENSHOT newpar,  
     I had to use flatten!, because without it I had a nested array, like this:  newpar,    
     ./Images/Results_without_flatten.jpg newpar,  
     This happened without the flatten! method being used on the array, because the @items variable was set equal to an empty array. Then, the split method turned the string into an array of strings, which is what I was pushing into the empty @items array. Flatten! collapses the nested arrays into one array that can later on be iterated over to display the contents of the shopping cart or do other things. newpar,  
