@@ -9,6 +9,66 @@ project_two=Project.create(title: "Book and Movie Memory Bank", description: "Th
 project_three=Project.create(title:  "National Park Trip Planner", description: "National Parks Trip Planner provides information about national parks in the United States, fetching from the National Park Service API and also linking to the National Park Service website. Users can save parks that they would like to go to or to learn more about and take notes on saved parks as they plan a trip. The idea for this application came from my eagerness to get outdoors. I like that National Parks are low-cost and offer educational opportunities about both history and nature.", video: "NationalParksDemo", image: "./Images/United_States.jpg")
 
 
+post_six=Post.create(title: "Building a Website", paragraphs: "Over the last week or so I worked on building a website to help promote myself and inform potential employers about me. It was also a great way to continue building on my knowledge and fluency with React and Ruby on Rails while trying to take control over my own image on the internet, an admittedly impossible task but still a worthy goal. newpar,
+The most challenging part of building the website was moving my blog over to it. If you are reading this on Medium, then you know that I am also still using their platform. In fact, it is much easier to use a platform that handles the hard work for me. However, I wanted to also make my blog directly available on my website. If nothing else, it was good practice solving a slew of coding issues. newpar,
+The main problem I encountered when handling moving my blog posts was in the formatting of information that was stored on the back end. I was easily able to assign an attribute to the class Blog to hold the information I wanted to display, but putting line and paragraph breaks where I wanted them was something I had to figure out how to do. Also, putting images, links, and videos exactly where I wanted them posed a problem at first. I could have done all of this on the front end, but it was a lot of information to have to store there. It also made sense to put it on the back end if I was going to be displaying several blog posts and wanted to display them in similar ways, have a list of post titles, etc. There are some things that are still on the front end that I may move to the back end at a later time, such as publication information. But it seemed like an easy solution that would back-fire later on to hard code the blog information on the front end, so that option was out. newpar,
+The way I ultimately ended up resolving formatting issues was to have an attribute called ‘paragraphs’ for every blog post and to provide specific markers within that long, long string to signal where I would like a new paragraph to start, where a video would be displayed, where an image would be displayed, where the text displayed was a block of code, etc. At the end of every portion of text where I wanted one paragraph to end and another one to begin I wrote ‘NEWPAR,’ except all in lowercase (I am typing it in scream case here to avoid formatting issues!). Then, on the front end, after fetching from the API and storing an array of posts in state in the parent component, I mapped over the posts to split at ‘NEWPAR,’ and display the text broken into paragraphs after filtering to delete the marker. Below is one example of this on the back end in the seed file. (Again, the uppercase is actually lowercase in my seed file.) newpar,
+While that kind of greeting may raise interesting existential questions, it is not very friendly. {} NEWPAR, newpar,
+Then, on the front end, I iterated over the seed information like this: newpar,
+expandingPost=()=>{ /n
+if (this.props.posts) { /n
+return this.props.posts.map(post=>{ /n
+let changeToArrays=post.paragraphs.split('NEWPAR,') /n
+let changeTheseArrays=changeToArrays.filter(description=>{ /n
+return description !=='NEWPAR' /n
+})
+return changeTheseArrays.map(paragraph=>{ /n
+if (paragraph.includes('{')) { /n
+if (paragraph.includes('/N')) { /n
+let newParagraphArray= paragraph.split('/N') /n
+let newArray=newParagraphArray.filter(description=>{ /n
+return description !=='/N' /n
+})
+return <div className='coding-in-blog'>{newArray.map(line=>{ /n
+return <p>{line}</p> /n
+})} /n
+</div> /n
+} newpar,
+The second part of the coding example above includes a conditional for blocks of code. Since a lot of coding examples have curly braces in them, for now I decided to let the condition be that if there is a curly brace… handle the formatting of the text in the following way. The ‘/N’ marker signaled the start of a new line, to make the code more readable. The curly brace conditional also allowed me to assign a specific class name to coding examples to style them in a way that set them off from the rest of the text. newpar,
+This methodology served me well later on when building the publications section of the blog, when I wanted to italicize the title of a publication and turn the name of a co-translator into a hyperlink. newpar,
+state={ /n
+expandBook: false, /n
+bookExpanded: [], /n
+books: [{title: 'Being Nude: The Skin of Images', /n
+... url: 'https://www.fordhampress.com/9780823256204/being-nude/', description: 'Being Nude: The Skin of Images /TITLE by Jean-Luc Nancy and Federico Ferrari is a Philosophy book that I co-translated with /TITLE Anne O'Byrne. /TITLE  It has nudity in different works of art as its subject matter and focuses on what these works reveal about intersubjectivity and identity. /TITLE'}, ... /n
+]
+} newpar,
+The trailing dots in the example above are just to indicate parts of the books array that are not included in this blog. By separating the string of text with the ‘/TITLE’ marker, I was able to iterate over this information in a child component in a similar way to how I did with information that was coming from the seed file that I wanted formatted and styled in a particular way. newpar,
+italicizeTheTitle=()=>{ /n
+if (this.props.bookExpanded.description.includes('/TITLE')) { /n
+let newDescription= this.props.bookExpanded.description.split('/TITLE') /n
+let changeTheDescription=newDescription.filter(description=>{ /n
+return description !=='/TITLE' /n
+}) /n
+return <React.Fragment> /n
+<p> /n
+<i>{changeTheDescription[0]}</i> /n
+{changeTheDescription[1]} /n
+<a className='link' target='_blank' rel='noopener noreferrer' href='https://www.stonybrook.edu/commcms/philosophy/people/_faculty/byrne.php'>{changeTheDescription[2]}</a> /n
+{changeTheDescription[3]} /n
+</p> /n
+</React.Fragment> /n
+} newpar,
+The function above is entitled ‘italicizeTheTitle’, because that is what I was originally writing the function to do. I wanted to italicize one small part of the string and had to find a way to set that portion of the text off from the rest of it without making it a whole new paragraph. Now that the function is taking care of other formatting issues, I will likely rename it to reflect that change. I will probably change the ‘/TITLE’ marker to reflect the expanded role that this marker is playing in the code, as well. newpar,
+So, here is my website: newpar,
+https://www.carlieanglemire.com. /anchor newpar,
+Since this is the first time I am deploying a site on the internet, I will warn you that there may still be some issues with Heroku and Netlify, which are the sites I am using.* At the moment, however, everything appears to be up and running. newpar,
+Though, the way I appear to others on the internet and in life is, of course, still largely out of my control. newpar,
+
+*Thank you to Nicolas Feitel for helping me to launch with these resources: newpar,
+https://medium.com/@nicholas.feitel /anchor newpar,
+    ")
+
 post_five=Post.create(title: "Local Storage in a National Park Trip Planner", paragraphs: "While working on my final project for Access Labs, I have been learning how to use localStorage so that users can navigate away from an app when they click on an external link and then return without having to log back in or refresh the page. This blog post is about what I have learned so far, particularly about storage that is not as permanent as saving something to the database but not as fleeting as saving something to state and not persisting it. It is a middle ground for keeping things around when you go away for a short while and want them to still be there when you come back. And if you never log out they may stay there for longer than you imagined they would. newpar, 
 In the last module, we worked on saving the token and user id to localStorage, but I wanted to practice adding more to it. I started with the username, because my greeting to the user was turning into this after they navigated away from the app and returned to it, until I put it in localStorage: newpar,
 ./Images/Hello_again_undefined.jpg newpar,
