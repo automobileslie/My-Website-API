@@ -9,6 +9,91 @@ project_two=Project.create(title: "Book and Movie Memory Bank", description: "Th
 project_three=Project.create(title:  "National Park Trip Planner", description: "National Parks Trip Planner provides information about national parks in the United States, fetching from the National Park Service API and also linking to the National Park Service website. Users can save parks that they would like to go to or to learn more about and take notes on saved parks as they plan a trip. The idea for this application came from my eagerness to get outdoors. I like that National Parks are low-cost and offer educational opportunities about both history and nature.", video: "NationalParksDemo", image: "./Images/United_States.jpg")
 
 
+post_seven=Post.create(title: "The Case of the Missing Sock", paragraphs: "Lately, I have been preparing for technical interviews and coding challenges with some of the materials on hackerrank.com. This is about one of the warm-up challenges that they make available to users. It is a problem that says to write a function that, given the two parameters of an array of numbers and a number that is equal to the length of that array, will return the number of pairs (of socks, but it could very well be of anything else) in the array. It was mostly an exercise in using the for loop, but it gave me a chance to review a number of other things as well. newpar,
+This is a spoiler alert, because I will go ahead a give my solution below. There are probably a lot of ways to solve the problem, but if anyone finds the way I did it helpful then so much the better. I will print the code first and then explain it in steps. newpar,
+
+function sockMerchant(n, ar) { /n
+if(n<2){ /n
+return 0 /n
+} /n
+let arrayCount=0; /n
+let firstArraySorted=ar.sort(function(a, b){ /n
+return a-b} /n
+) /n
+let c; /n
+for (c=0; c<firstArraySorted.length; c++){ /n
+if (firstArraySorted[c] === firstArraySorted[firstArraySorted.length-1]){ /n
+if(firstArraySorted[c] === firstArraySorted[0]){ /n
+arrayCount+=1} /n
+} /n
+else { /n
+if (firstArraySorted[c] === firstArraySorted[c+1]){ /n
+arrayCount+=1 /n
+} /n
+} /n
+} /n
+if (arrayCount === firstArraySorted.length){ /n
+return (firstArraySorted.length)/2 /n
+} /n
+let theArrays=[] /n
+let i; /n
+for (i=0; i<n; i++){ /n
+let findMatches= ar.filter(number =>{ /n
+return number === parseInt(ar[i]) /n
+}) /n
+if(findMatches.length >1){ /n
+theArrays.push(findMatches)} /n
+} /n
+let sortedArrays= theArrays.sort() /n
+function changeArrays(anArray){ /n
+let newArray=[] /n
+let s; /n
+for (s=0; s<=anArray.length-1; s++){ /n
+if(s!==anArray.length-1){ /n
+if(anArray[s][0] !== anArray[s+1][0]){ /n
+newArray.push(anArray[s]) /n
+} /n
+} /n
+else { /n
+if(anArray[s][0] !==anArray[s-(anArray.length-1)][0]){ /n
+newArray.push(anArray[s]) /n
+} /n
+} /n
+} /n
+return newArray /n
+} /n
+let updatedArray= changeArrays(sortedArrays) /n
+let anotherUpdatedArray= updatedArray.map(array=>{ /n
+return parseInt(array.length/2) /n
+}) /n
+function sum(someArray){ /n
+let total=0 /n
+let a; /n
+for (a=0; a<=someArray.length-1; a++){ /n
+total+=someArray[a] /n
+} /n
+return total /n
+} /n
+return sum(anotherUpdatedArray) /n
+} newpar,
+
+
+The first conditional statement says that if the number of items in the array is less than two, then the number of pairs must be zero. So, it returns zero, and the rest of the code after that does not execute. newpar,
+
+The following part of the code handles the case in which all of the numbers in the array are the same and n is an even number, meaning there are only pairs and no loose socks. In that case, the number of numbers in the array (n) can just be divided by 2. I sorted the array passed in as an argument so that each number in the array could be checked against the number that follows it as the array is looped over. The first part of the conditional statement says that if the number is the last one in the array it will be checked against the number in the first position in the array. If every number in the array turns out to be the same as the number after it (or in the case of the item in the last index position the same as the first number in the array), then the length of arrayCount will be equal to the length of the original array, meaning they all have a match. If this is the case, then the rest of the code after this will not run, and the function will return the quotient of n/2. I might try to re-work later parts of the code to deal with this edge case, but for now this is how I am tackling it. Something that I appreciate about hackerrank.com is that it often has several test cases to check your solution against. One of those tests is what led me to incorporate this into my solution. newpar,
+
+In the next part of the solution, a filter is placed inside of a loop, so the array that is passed into the sockMerchant function as an argument is filtered once for every index in the array. The filter checks for any repeating numbers, but the logic entails that the number will be returned at least once, since it matches itself. If it matches not only itself (which is inevitable) but also another number, then findMatches will have multiples of the same number, such as [1, 1, 1]. That means that 1 matched itself, but the number 1 also appeared two more times in the array. If there had been only one 1 in the array, then the value of findMatches would have been [1]. The next part of the conditional states that if the length of findMatches is greater than 1, then that array should be pushed into theArrays, which becomes an array of arrays. The numbers that do not repeat and end up being a single number in an array (such as [1] or [2], etc.) are irrelevant, because they cannot be part of a pair. Since their length is not greater than one, they are not pushed into theArrays. This filter repeats for every item in the index, with the updated value of findMatches being either pushed or not pushed into theArrays depending on its length before the loop moves on to the next index and eventually gets through the whole array. newpar,
+
+The function changeArrays reduces an array of arrays that has any repeats inside of it, to get rid of them. I had to do this, because in the last part of the code, I checked for repeat numbers multiple times. In other words, if the array to begin with was [1, 2, 1, 3, 4, 7], theArrays would equal [[1, 1], [1, 1]]. That might imply that there are two pairs of 1, when there is only one pair. There are probably other ways of dealing with this, but I decided to root out the repeat arrays in the following way to then handle the reduced set. After I define the function changeArrays, I call it, passing sortedArrays (theArrays with .sort() called on it and saved to a new variable so that the arrays that are alike are grouped together, as in [[1, 1, 1], [1, 1, 1], [2, 2], [2, 2]]) in as an argument and assigning the return from that call to the variable updatedArray. newpar,
+
+Next, I mapped over the array of arrays (updatedArray) to get the number of pairs in each array, and I stored the new array returned from the map in a variable, anotherUpdatedArray. For example, if updatedArray is [[1, 1, 1, 1], [2, 2]], then that is transformed into [[2], [1]]. The length of the first array is 4, and that is divided by 2, indicating that there are two pairs in that array. The second array in updatedArray has a length of two, and 2/2=1, indicating that there is one pair in the second array. If any of the arrays in the array wrapping them have an odd amount of numbers, the parseInt wrapping array.length/2 rounds the quotient down to the nearest whole integer, removing any decimals. As such, when [1, 1, 1] becomes 3/2=1.5, parseInt turns that into [1]. That makes sense for us here, because it means that any remainders are loose socks and should not be counted as a pair. The updatedArray no longer tells us which numbers from the original array have matches, but we do not need to know that for the purposes of this problem. We just need to know how many pairs there are, not what the pairs themselves are. newpar,
+
+The last thing to do is to add the separate sets of numbers of pairs that I counted up in the last part of code together. They are trapped in separate arrays in one array that wraps them at this point. One thing I could have done here would have been to flatten anotherUpdatedArray using .flat() on it before performing different logic to add the number of pairs together. But instead I wrote a function to loop through anotherUpdatedArray and add the value inside of each array to a variable called ‘total’, initially set to 0. If anotherUpdatedArray is [[2], [1]], then when the loop runs, 2 is added to the current value of ‘total’ (0) to bring it up to 2. When the loop goes to the next array, the value there, 1, is added to the current value of ‘total’, bring it up to 3. Then, the value of ‘total’ is returned at the end of the function. I wrote this out as a function and then called it, passing in anotherUpdatedArray as an argument. I did not have to make it a function, but doing this allows this part of the code to be used elsewhere inside of sockMerchant. I did not happen to need to reuse it, but if I did it would have allowed me to avoid rewriting the same logic. There are other parts of the sockMerchant function that I could try to DRY out in a similar way, but this is what I have right now. newpar,
+
+If you prefer to wear mismatched socks or would like to create some kind of sensation amongst your customers (which I definitely do not encourage), then you could, of course, write a totally different kind of function! newpar,
+
+")
+
 post_six=Post.create(title: "Building a Website", paragraphs: "Over the last week or so I worked on building a website to help promote myself and inform potential employers about me. It was also a great way to continue building on my knowledge and fluency with React and Ruby on Rails while trying to take control over my own image on the internet, an admittedly impossible task but still a worthy goal. newpar,
 The most challenging part of building the website was moving my blog over to it. If you are reading this on Medium, then you know that I am also still using their platform. In fact, it is much easier to use a platform that handles the hard work for me. However, I wanted to also make my blog directly available on my website. If nothing else, it was good practice solving a slew of coding issues. newpar,
 The main problem I encountered when handling moving my blog posts was in the formatting of information that was stored on the back end. I was easily able to assign an attribute to the class Blog to hold the information I wanted to display, but putting line and paragraph breaks where I wanted them was something I had to figure out how to do. Also, putting images, links, and videos exactly where I wanted them posed a problem at first. I could have done all of this on the front end, but it was a lot of information to have to store there. It also made sense to put it on the back end if I was going to be displaying several blog posts and wanted to display them in similar ways, have a list of post titles, etc. There are some things that are still on the front end that I may move to the back end at a later time, such as publication information. But it seemed like an easy solution that would back-fire later on to hard code the blog information on the front end, so that option was out. newpar,
