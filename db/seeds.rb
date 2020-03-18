@@ -8,6 +8,77 @@ project_two=Project.create(title: "Book and Movie Memory Bank", description: "Th
 
 project_three=Project.create(title:  "National Park Trip Planner", description: "National Parks Trip Planner provides information about national parks in the United States, fetching from the National Park Service API and also linking to the National Park Service website. Users can save parks that they would like to go to or to learn more about and take notes on saved parks as they plan a trip. The idea for this application came from my eagerness to get outdoors. I like that National Parks are low-cost and offer educational opportunities about both history and nature.", video: "NationalParksDemo", image: "./Images/United_States.jpg")
 
+post_eight=Post.create(title: "A Function For Filtering Out Anagrams", paragraphs: "Recently, I completed a coding challenge that asked me to write a function that takes one argument of an array of strings and filters out any anagrams before returning a sorted array. The array that is returned should have the first instance of a string that has an anagram, just not any of its distorted doppelganger friends. I have no idea when this function would be useful. Maybe if you would like to find anagrams in poems? But you would probably want the output to be a little different if that was the objective. In any case, it was a fun problem to work on. newpar,
+
+The Poetry Foundation gives a concise definition of an anagram here: newpar,
+
+https://www.poetryfoundation.org/learn/glossary-terms/anagram /anchor newpar,
+
+I liked their example “The teacher gapes at the mounds of exam pages lying before her.” That sentence alone is an argument against trying to filter anagrams out of your arrays. If I was an English teacher, I would make my students do anagram exercises. But since not all anagrams are created equal, I can see why sometimes one might want to get rid of them. newpar,
+
+This is my solution for the attack of the anagrams at the moment: newpar,
+
+function filteringAnagrams(anArray){ /n
+
+let newArray=[] /n
+let a; /n
+for(a=0; a<anArray.length; a++){ /n
+newArray.push(anArray[a].split('').sort /n
+((a, b)=>{return a.localeCompare(b)})) /n
+} /n
+
+let j; /n
+let anotherNewArray=[] /n
+for(j=0; j<newArray.length; j++){ /n
+let arrayWithoutWhiteSpace= newArray[j].filter(string=>{ /n
+return string !== '' /n
+}) /n
+anotherNewArray.push(arrayWithoutWhiteSpace) /n
+} /n
+
+let newNewArray=[] /n
+let h; /n
+for(h=0;h<anotherNewArray.length; h++){ /n
+if(!newNewArray.includes(anotherNewArray[h].join(''))){ /n
+newNewArray.push(anotherNewArray[h].join('')) /n
+} /n
+} /n
+
+let s; /n
+let arrayToSort=[] /n
+for(s=0; s<newNewArray.length; s++){ /n
+let findMatch=anArray.find(string=>{ /n
+if (string.split('').sort((a, b)=> /n
+{return a.localeCompare(b)}).join('')===newNewArray[s]) /n
+return string /n
+}) /n
+arrayToSort.push(findMatch) /n
+} /n
+
+let finalArray= arrayToSort.sort((a, b)=>{return a.localeCompare(b)}) /n
+return finalArray newpar,
+
+Like the problem I wrote about in my last blog post, this is an exercise in for loops and also requires joining, splitting, sorting, pushing, finding, and filtering. If you do not get sick of those kinds of actions then you are probably pretty well-positioned for facing a lot of things in life — or at least I hope so, since that is the majority of what I have been doing lately. newpar,
+
+In the first loop, I split and sorted each string in the original array so that we have an array of arrays of the letters in each of the strings stored in a variable. For example, if the array passed in was [‘aaba’, ‘a baa’, ‘cccc’, ‘dread’], then newArray, or the result of the first loop, would be [[‘a’, ‘a’, ‘a’, ‘b’ ], [‘ ’, ‘a’, ‘a’, ‘a’, ‘b’], [‘c’, ‘c’, ‘c’, ‘c’], [‘a’, ‘d’, ‘d’, ‘e’, ‘r’]]. The reason for sorting and splitting the strings is so that there is a basis for comparing words to each other to see if they are anagrams. “aaba” and “a baa” are not equivalent as they are; if I looped through the array for matches without sorting the letters, the loop would not be able to filter out their similarities, or it would require a different kind of logic to do so. Rearranging the words so that the letters are in a specific order allowed me to take stock of the components of the string. If all of the letters composing a string are the same, even if they are arranged differently in their original form, then eventually they will be filtered out. newpar,
+
+The next loop is meant to filter out any whitespace in a string. When I googled anagram, I saw the following example. newpar,
+
+./Images/Anagram_wikipedia.jpg newpar,
+
+Seeing this example of the word ‘anagram’ having the anagram ‘nag a ram’ made me realize that I would have to filter out whitespace. The second loop returns the same array of arrays as the last one but with with empty strings removed. So, [‘ ’, ‘a’, ‘a’, ‘a’, ‘b’] becomes [‘a’, ‘a’, ‘a’, ‘b’]. If I did not do this, then the function would not read 'aaba' and 'a baa' as anagrams and would keep both of them in the end. newpar,
+
+In the next loop, I iterate over the array of arrays of letters, join each array of strings of letters back into strings and push all of the unique strings into a new array. For example, [[‘a’, ‘a’, ‘a’, ‘b’ ], [‘a’, ‘a’, ‘a’, ‘b’], [‘c’, ‘c’, ‘c’, ‘c’], [‘a’, ‘d’, ‘d’, ‘e’, ‘r’]] becomes ['aaab', 'adder', 'cccc']. The point here is to get rid of strings that repeat themselves (here that was 'aaab'). newpar,
+
+The next loop compares the original array with the array returned in the previous loop to get information about how to change the original array. I loop over newNewArray (the one we got from the last loop), so that each of the items in it are compared to what is in the original array. For every index in newNewArray, I call the .find() method on the array passed into the function to get the first match for newNewArray’s current index’s string. Before making that comparison, I had to split, sort, and join the strings in the original array. Then, that match is pushed into a new array, which is then sorted and returned at the end of the function. For example, if the array we ended up with in the third loop was ['aaab', 'adder', 'cccc'], the fourth loop would visit each of the strings in that array. For each string, the original array ['aaba', 'a baa', 'cccc', 'dread'] has .find() called on it. In the body of the .find() method, I compare 'aaba'.split('').sort((a, b)=>{return a.localeCompare(b)}).join('') (in other words 'aaab') to the string at the index we are on in the loop. When we call .find() on the original array for the zero index, or the first position in newNewArray, 'aaab' matches 'aaba' in its reconfigured form. So, 'aaba' is pushed into arrayToSort. 'a baa' is not pushed into arrayToSort, because find() only returns the first match for which the logic in the body of the method is true. 'a baa' is second, so it is out. newpar,
+
+This song kind of reminds me of what it is like chasing down the anagram. Maybe the moral is to not be a sheep? newpar,
+
+https://www.youtube.com/embed/u4tNoh_Wjos newpar,
+
+In any case, after the last loop is complete, I sort one more time to get the un-anagrammed array in order. Though I have tested the function with some different arrays being passed in, the next step for me might be to start writing tests to search for more edge cases, as there always seem to be more than I imagine!
+
+")
 
 post_seven=Post.create(title: "The Case of the Missing Sock", paragraphs: "Lately, I have been preparing for technical interviews and coding challenges with some of the materials on hackerrank.com. This is about one of the warm-up challenges that they make available to users. It is a problem that says to write a function that, given the two parameters of an array of numbers and a number that is equal to the length of that array, will return the number of pairs (of socks, but it could very well be of anything else) in the array. It was mostly an exercise in using the for loop, but it gave me a chance to review a number of other things as well. newpar,
 This is a spoiler alert, because I will go ahead a give my solution below. There are probably a lot of ways to solve the problem, but if anyone finds the way I did it helpful then so much the better. I will print the code first and then explain it in steps. newpar,
