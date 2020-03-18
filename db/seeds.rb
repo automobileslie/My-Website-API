@@ -56,7 +56,7 @@ arrayToSort.push(findMatch) /n
 } /n
 
 let finalArray= arrayToSort.sort((a, b)=>{return a.localeCompare(b)}) /n
-return finalArray newpar,
+return finalArray } newpar,
 
 Like the problem I wrote about in my last blog post, this is an exercise in for loops and also requires joining, splitting, sorting, pushing, finding, and filtering. If you do not get sick of those kinds of actions then you are probably pretty well-positioned for facing a lot of things in life — or at least I hope so, since that is the majority of what I have been doing lately. newpar,
 
