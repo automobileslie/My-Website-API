@@ -14,7 +14,7 @@ The Poetry Foundation gives a concise definition of an anagram here: newpar,
 
 https://www.poetryfoundation.org/learn/glossary-terms/anagram /anchor newpar,
 
-I liked their example “The teacher gapes at the mounds of exam pages lying before her.” That sentence alone is an argument against trying to filter anagrams out of your arrays. If I was an English teacher, I would make my students do anagram exercises. But since not all anagrams are created equal, I can see why sometimes one might want to get rid of them. newpar,
+I liked their example 'The teacher gapes at the mounds of exam pages lying before her.' That sentence alone is an argument against trying to filter anagrams out of your arrays. If I was an English teacher, I would make my students do anagram exercises. But since not all anagrams are created equal, I can see why sometimes one might want to get rid of them. newpar,
 
 This is my solution for the attack of the anagrams at the moment: newpar,
 
@@ -76,9 +76,7 @@ This song kind of reminds me of what it is like chasing down the anagram. Maybe 
 
 https://www.youtube.com/embed/u4tNoh_Wjos newpar,
 
-In any case, after the last loop is complete, I sort one more time to get the un-anagrammed array in order. Though I have tested the function with some different arrays being passed in, the next step for me might be to start writing tests to search for more edge cases, as there always seem to be more than I imagine!
-
-")
+In any case, after the last loop is complete, I sort one more time to get the un-anagrammed array in order. Though I have tested the function with some different arrays being passed in, the next step for me might be to start writing tests to search for more edge cases, as there always seem to be more than I imagine!")
 
 post_seven=Post.create(title: "The Case of the Missing Sock", paragraphs: "Lately, I have been preparing for technical interviews and coding challenges with some of the materials on hackerrank.com. This is about one of the warm-up challenges that they make available to users. It is a problem that says to write a function that, given the two parameters of an array of numbers and a number that is equal to the length of that array, will return the number of pairs (of socks, but it could very well be of anything else) in the array. It was mostly an exercise in using the for loop, but it gave me a chance to review a number of other things as well. newpar,
 This is a spoiler alert, because I will go ahead a give my solution below. There are probably a lot of ways to solve the problem, but if anyone finds the way I did it helpful then so much the better. I will print the code first and then explain it in steps. newpar,
