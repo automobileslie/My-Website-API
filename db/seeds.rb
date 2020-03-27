@@ -8,15 +8,16 @@ project_two=Project.create(title: "Book and Movie Memory Bank", description: "Th
 
 project_three=Project.create(title:  "National Park Trip Planner", description: "National Parks Trip Planner provides information about national parks in the United States, fetching from the National Park Service API and also linking to the National Park Service website. Users can save parks that they would like to go to or to learn more about and take notes on saved parks as they plan a trip. The idea for this application came from my eagerness to get outdoors. I like that National Parks are low-cost and offer educational opportunities about both history and nature.", video: "NationalParksDemo", image: "./Images/United_States.jpg")
 
-post_nine=Post.create(title: "Repeated String Function", paragraphs: "Recently, I wrote a function in response to a problem on hackerrank.com and after solving it in one way learned another way of approaching it from another developer. The function takes in a string that can repeat infinitely many times and a number that indicates the length of the string in this instance and returns the number of times the letter ‘a’ appears in the lengthened string. For example, if s is ‘aght’ and n is 7, then the string you would want to count the a’s of would be ‘aghtagh’. As I have written before, hackerrank’s test cases have been helpful in getting me to consider lots of edge cases and to make sure functions work as they are supposed to under different circumstances. In this case, it was helpful, but eventually the code I came up with was working in my console while appearing to time out and abort in the website’s environment for some of the test cases, when there were larger numbers involved. I am still not sure why this happened; it is a subject for further research. One opportunity that arose from this, however, was that I was prompted to consult the discussion board to see if other developers had insights that could clarify my confusion. As such, this is basically a post about solving a problem and then learning from someone else a much easier way of tackling it. mewpar,
+post_nine=Post.create(title: "Repeated String Function", paragraphs: "Recently, I wrote a function in response to a problem on hackerrank.com and after solving it in one way learned another way of approaching it from another developer. The function takes in a string that can repeat infinitely many times and a number that indicates the length of the string in this instance and returns the number of times the letter ‘a’ appears in the lengthened string. For example, if s is ‘aght’ and n is 7, then the string you would want to count the a’s of would be ‘aghtagh’. As I have written before, hackerrank’s test cases have been helpful in getting me to consider lots of edge cases and to make sure functions work as they are supposed to under different circumstances. In this case, it was helpful, but eventually the code I came up with was working in my console while appearing to time out and abort in the website’s environment for some of the test cases, when there were larger numbers involved. I am still not sure why this happened; it is a subject for further research. One opportunity that arose from this, however, was that I was prompted to consult the discussion board to see if other developers had insights that could clarify my confusion. As such, this is basically a post about solving a problem and then learning from someone else a much easier way of tackling it. newpar,
 
 This is the not-DRY function I wrote that I do not recommend using, although I learned a lot from the process of thinking through it and as far as I know it is not technically wrong. A couple of curly braces at the end have been omitted. I will walk through it and then discuss the succinct solution that someone else had. newpar,
 
     function repeatString(s, n) { /n
         if (n===0){ /n
-        return 0 /n
+            return 0 /n
         } /n
-        if (n%s.length===0){ /n
+
+        if (n%(s.length===0)){ /n
         if(s.length===1){ /n
         if(s==='a'){ /n
         return n /n
@@ -100,8 +101,8 @@ This is the not-DRY function I wrote that I do not recommend using, although I l
         theNumberOfA+=1 /n
         } /n
         } /n
-        return theNumberOfA newpar,
-
+        return theNumberOfA /n
+        } newpar,
 
 There are a few nested conditions in the code. The first condition is one I added at the end, in case anyone entered 0 for n, which means that essentially there is no point in using the function to begin with. newpar,
 
@@ -124,7 +125,7 @@ return d * counta(s) + counta(s.substr(0, r)) /n
 
 https://www.hackerrank.com/challenges/repeated-string/forum?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup /anchor newpar,
 
-As another user noted, instead of adding strings together to then count the a’s in the new string (as I did in my function), he instead counted the a’s in s after filtering through it to get them (by taking the length of the filtered array and saving it to a variable). He then multiplies that number of a’s by the quotient of n and s.length (the number of times that s should be repeated) and rounds it down to the nearest integer using Math.floor(). Then he finds the remainder and essentially takes a slice of it using the substr() method, counts the a’s in that slice and adds the one set of a’s to the other set of a’s. When I looked up substr() on the MDN, it said that it is not deprecated but is a legacy function. The .substring() and .slice() methods do the same thing. This is a quicker way of getting a portion of the string then looping through s and pushing what I want from it into a new array — as I was doing, because I am loop-crazy these days. Maybe it is the Coronavirus cabin fever. newpar,
+As another user noted, instead of adding strings together to then count the a’s in the new string, which is what I did in my function, he instead counted the a’s in s after filtering through it to get them, by taking the length of the filtered array and saving it to a variable. He then multiplies that number of a’s by the quotient of n and s.length, the number of times that s should be repeated, and rounds it down to the nearest integer using Math.floor(). Then he finds the remainder and essentially takes a slice of it using the substr() method, counts the a’s in that slice and adds the one set of a’s to the other set of a’s. When I looked up substr() on the MDN, it said that it is not deprecated but is a legacy function. The .substring() and .slice() methods do the same thing. This is a quicker way of getting a portion of the string then looping through s and pushing what I want from it into a new array — as I was doing, because I am loop-crazy these days. Maybe it is the Coronavirus cabin fever. newpar,
 
 So, thank you, Anthony, whoever you are, for showing me that I took the wrong road round but more importantly for showing me a better way. newpar,
 
