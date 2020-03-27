@@ -8,6 +8,132 @@ project_two=Project.create(title: "Book and Movie Memory Bank", description: "Th
 
 project_three=Project.create(title:  "National Park Trip Planner", description: "National Parks Trip Planner provides information about national parks in the United States, fetching from the National Park Service API and also linking to the National Park Service website. Users can save parks that they would like to go to or to learn more about and take notes on saved parks as they plan a trip. The idea for this application came from my eagerness to get outdoors. I like that National Parks are low-cost and offer educational opportunities about both history and nature.", video: "NationalParksDemo", image: "./Images/United_States.jpg")
 
+post_nine=Post.create(title: "Repeated String Function", paragraphs: "Recently, I wrote a function in response to a problem on hackerrank.com and after solving it in one way learned another way of approaching it from another developer. The function takes in a string that can repeat infinitely many times and a number that indicates the length of the string in this instance and returns the number of times the letter ‘a’ appears in the lengthened string (for example, if s is ‘aght’ and n is 7, then the string you would want to count the a’s of would be ‘aghtagh’). As I have written before, hackerrank’s test cases have been helpful in getting me to consider lots of edge cases and to make sure functions work as they are supposed to under different circumstances. In this case, it was helpful, but eventually the code I came up with was working in my console while appearing to time out and abort in the website’s environment for some of the test cases (when there were larger numbers involved). I am still not sure why this happened; it is a subject for further research. One opportunity that arose from this, however, was that I was prompted to consult the discussion board to see if other developers had insights that could clarify my confusion. As such, this is basically a post about solving a problem and then learning from someone else a much easier way of tackling it. mewpar,
+
+This is the not-DRY function I wrote that I do not recommend using, although I learned a lot from the process of thinking through it and as far as I know it is not technically wrong. I will walk through it and then discuss the succinct solution that someone else had. newpar,
+
+function repeatString(s, n) { /n
+if (n===0){ /n
+return 0 /n
+} /n
+if (n%s.length===0){ /n
+if(s.length===1){ /n
+if(s==='a'){ /n
+return n /n
+} /n
+else{ /n
+return 0 /n
+} /n
+} /n
+let newS=[] /n
+let divided= n/s.length /n
+let i; /n
+for(i=0; i<=divided; i++){ /n
+if(i){ /n
+newS.push(s) /n
+} /n
+} /n
+if (newS.length > 1) { /n
+let thisArray=newS.join('').split(' ') /n
+let p; /n
+let theNumberOfAs=0 /n
+for(p=0; p<thisArray[0].length; p++){ /n
+if(thisArray[0][p]==='a'){ /n
+theNumberOfAs+=1 /n
+} /n
+} /n
+return theNumberOfAs /n
+} /n
+else{ /n
+let p; /n
+let theNumberOfAs=0 /n
+for(p=0; p<newS[0].length; p++){ /n
+if(newS[0][p]==='a'){ /n
+theNumberOfAs+=1 /n
+} /n
+} /n
+return theNumberOfAs /n
+} /n
+} /n
+else { /n
+if(n<s.length){ /n
+let newString=[] /n 
+let q; /n
+for(q=0; q<n; q++){ /n
+if(s[q]){ /n
+newString.push(s[q]) /n
+} /n
+} /n
+let w; /n
+let numberOfA=0 /n
+for(w=0; w<newString.length; w++){ /n
+if(newString[w]==='a'){ /n
+numberOfA+=1 /n
+} /n
+} /n
+return numberOfA /n
+} /n
+else{ /n
+let newS=[] /n
+let theNumberOfAs=0 /n
+let divided= parseInt(n/s.length) /n
+let i; /n
+for(i=0; i<=divided; i++){ /n
+if(i){ /n
+newS.push(s) /n
+} /n
+} /n
+let remainder= n%s.length /n
+let anotherNewString=[] /n
+let q; /n
+for(q=0; q<remainder; q++){ /n
+if(s[q]){ /n
+anotherNewString.push(s[q]) /n
+} /n
+} /n
+let anotherArray= newS.concat(anotherNewString) /n
+let newStringedArray=anotherArray.join('').split(' '') /n
+let p; /n
+let theNumberOfA=0 /n
+for(p=0; p<newStringedArray[0].length; p++){ /n
+if(newStringedArray[0][p]==='a'){ /n
+theNumberOfA+=1 /n
+} /n
+} /n
+return theNumberOfA /n
+} /n
+} /n
+} newpar, 
+
+There are a few nested conditions in the code. The first condition is one I added at the end, in case anyone entered 0 for n, which means that essentially there is no point in using the function to begin with. newpar,
+
+The second condition is to account for situations where there is no remainder when n is divided by the length of s. There are a few nested conditions within this part of the code. The first part states that if the length of n is 1, if n=== ‘a’, then ‘a’ is just repeated n number of times. Unfortunately it is not that simple the way I have it set up, since strings cannot be multiplied. But it is simpler than in some of the other cases. If n does not equal ‘a’, then there is no chance for any a’s to work their way in, so the return value is zero. newpar,
+
+Next, I set up a for loop and an empty array in order to push the string n number of times into it before iterating over that new array to count the number of a’s in it. If s is ‘abaagt’ and n is 6, then I do not have to join and split the newS array, but if n is 12, for example, then I join and split newS first. That is because in the first case, newS will have one string nested inside an array, while in the second case there will be two strings nested inside of it and separated by a comma. I did not want to add an additional for loop to loop through each string in the array, so instead I joined the two items in the array by using the split and join methods. Then, in the for loop in both cases I could read the zero index of the array (which is the whole string inside the array) and go to each letter to ‘ask’ it whether it is an a. If it is, it ups the a count, which then gets returned. In the case where n is less than the length of s, n sets the index at which to stop looping over the string, since we do not want to read the whole string but just part of it. newpar,
+
+The next part of the code is for when there is a remainder when n is divided by the length of s. The first part here is to get the full strings chained to each other before handling the fragment. ParseInt rounds down to the nearest integer, and that represents the full number of strings we will need. Then, I do something similar to what I did earlier to basically take a slice of s, with the remainder giving the stopping point when going through the string to count up the a’s. I concat the first array and the ‘remainder’ array, then split and join them and use a for loop to go through and count the number of times ‘a’ appears. newpar,
+
+The next solution was posted by Anthony Nandaa on the discussion board of hackerrank.com. I hope he does not mind that I am citing his work here. newpar,
+
+function repeatedString(s, n) { /n
+const counta = (str) => str.split('') /n
+.filter(c => c == 'a') /n
+.length /n
+const d = Math.floor(n / s.length) /n
+const r = n - (s.length * d) /n
+return d * counta(s) + counta(s.substr(0, r)) /n
+} newpar,
+
+https://www.hackerrank.com/challenges/repeated-string/forum?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup /anchor newpar,
+
+As another user noted, instead of adding strings together to then count the a’s in the new string (as I did in my function), he instead counted the a’s in s after filtering through it to get them (by taking the length of the filtered array and saving it to a variable). He then multiplies that number of a’s by the quotient of n and s.length (the number of times that s should be repeated) and rounds it down to the nearest integer using Math.floor(). Then he finds the remainder and essentially takes a slice of it using the substr() method, counts the a’s in that slice and adds the one set of a’s to the other set of a’s. When I looked up substr() on the MDN, it said that it is not deprecated but is a legacy function. The .substring() and .slice() methods do the same thing. This is a quicker way of getting a portion of the string then looping through s and pushing what I want from it into a new array — as I was doing, because I am loop-crazy these days. Maybe it is the Coronavirus cabin fever. newpar,
+
+So, thank you, Anthony, whoever you are, for showing me that I took the wrong road round but more importantly for showing me a better way. newpar,
+
+https://youtu.be/Qijs_0IQ-DM newpar,
+
+")
+
 post_eight=Post.create(title: "A Function For Filtering Out Anagrams", paragraphs: "Recently, I completed a coding challenge that asked me to write a function that takes one argument of an array of strings and filters out any anagrams before returning a sorted array. The array that is returned should have the first instance of a string that has an anagram, just not any of its distorted doppelganger friends. I have no idea when this function would be useful. Maybe if you would like to find anagrams in poems? But you would probably want the output to be a little different if that was the objective. In any case, it was a fun problem to work on. newpar,
 
 The Poetry Foundation gives a concise definition of an anagram here: newpar,
