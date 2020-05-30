@@ -12,96 +12,96 @@ post_nine=Post.create(title: "Repeated String Function", paragraphs: "Recently, 
 
 This is the not-DRY function I wrote that I do not recommend using, although I learned a lot from the process of thinking through it and as far as I know it is not technically wrong. A couple of curly braces at the end have been omitted. I will walk through it and then discuss the succinct solution that someone else had. newpar,
 
-    function repeatString(s, n) { /n
-        if (n===0){ /n
-            return 0 /n
-        } /n
+    function repeatString(s, n) { \n
+        if (n===0){ \n
+            return 0 \n
+        } \n
 
-        if (n%(s.length===0)){ /n
-        if(s.length===1){ /n
-        if(s==='a'){ /n
-        return n /n
-        } /n
-        else{ /n
-        return 0 /n
-        } /n
-        } /n
-        let newS=[] /n
-        let divided= n/s.length /n
-        let i; /n
-        for(i=0; i<=divided; i++){ /n
-        if(i){ /n
-        newS.push(s) /n
-        } /n
-        } /n
-        if (newS.length > 1) { /n
-        let thisArray=newS.join('').split(' ') /n
-        let p; /n
-        let theNumberOfAs=0 /n
-        for(p=0; p<thisArray[0].length; p++){ /n
-        if(thisArray[0][p]==='a'){ /n
-        theNumberOfAs+=1 /n
-        } /n
-        } /n
-        return theNumberOfAs /n
-        } /n
-        else{ /n
-        let p; /n
-        let theNumberOfAs=0 /n
-        for(p=0; p<newS[0].length; p++){ /n
+        if (n%(s.length===0)){ \n
+        if(s.length===1){ \n
+        if(s==='a'){ \n
+        return n \n
+        } \n
+        else{ \n
+        return 0 \n
+        } \n
+        } \n
+        let newS=[] \n
+        let divided= n/s.length \n
+        let i; \n
+        for(i=0; i<=divided; i++){ \n
+        if(i){ \n
+        newS.push(s) \n
+        } \n
+        } \n
+        if (newS.length > 1) { \n
+        let thisArray=newS.join('').split(' ') \n
+        let p; \n
+        let theNumberOfAs=0 \n
+        for(p=0; p<thisArray[0].length; p++){ \n
+        if(thisArray[0][p]==='a'){ \n
+        theNumberOfAs+=1 \n
+        } \n
+        } \n
+        return theNumberOfAs \n
+        } \n
+        else{ \n
+        let p; \n
+        let theNumberOfAs=0 \n
+        for(p=0; p<newS[0].length; p++){ \n
         if(newS[0][p]==='a'){
-        theNumberOfAs+=1 /n
-        } /n
-        } /n
-        return theNumberOfAs /n
-        } /n
-        } /n
-        else { /n
-        if(n<s.length){ /n
-        let newString=[] /n
-        let q; /n
-        for(q=0; q<n; q++){ /n
-        if(s[q]){ /n
-        newString.push(s[q]) /n
-        } /n
-        } /n
-        let w; /n
-        let numberOfA=0 /n
-        for(w=0; w<newString.length; w++){ /n
-        if(newString[w]==='a'){ /n
-        numberOfA+=1 /n
-        } /n
-        } /n
-        return numberOfA /n
-        } /n
-        else{ /n
-        let newS=[] /n
-        let theNumberOfAs=0 /n
-        let divided= parseInt(n/s.length) /n
-        let i; /n
+        theNumberOfAs+=1 \n
+        } \n
+        } \n
+        return theNumberOfAs \n
+        } \n
+        } \n
+        else { \n
+        if(n<s.length){ \n
+        let newString=[] \n
+        let q; \n
+        for(q=0; q<n; q++){ \n
+        if(s[q]){ \n
+        newString.push(s[q]) \n
+        } \n
+        } \n
+        let w; \n
+        let numberOfA=0 \n
+        for(w=0; w<newString.length; w++){ \n
+        if(newString[w]==='a'){ \n
+        numberOfA+=1 \n
+        } \n
+        } \n
+        return numberOfA \n
+        } \n
+        else{ \n
+        let newS=[] \n
+        let theNumberOfAs=0 \n
+        let divided= parseInt(n/s.length) \n
+        let i; \n
         for(i=0; i<=divided; i++){
-        if(i){ /n
-        newS.push(s) /n
-        } /n
-        } /n
-        let remainder= n%s.length /n
-        let anotherNewString=[] /n
-        let q; /n
-        for(q=0; q<remainder; q++){ /n
-        if(s[q]){ /n
-        anotherNewString.push(s[q]) /n
-        } /n
-        } /n
-        let anotherArray= newS.concat(anotherNewString) /n
+        if(i){ \n
+        newS.push(s) \n
+        } \n
+        } \n
+        let remainder= n%s.length \n
+        let anotherNewString=[] \n
+        let q; \n
+        for(q=0; q<remainder; q++){ \n
+        if(s[q]){ \n
+        anotherNewString.push(s[q]) \n
+        } \n
+        } \n
+        let anotherArray= newS.concat(anotherNewString) \n
         let newStringedArray=anotherArray.join('').split(' ')
-        let p; /n
-        let theNumberOfA=0 /n
-        for(p=0; p<newStringedArray[0].length; p++){ /n
-        if(newStringedArray[0][p]==='a'){ /n
-        theNumberOfA+=1 /n
-        } /n
-        } /n
-        return theNumberOfA /n
+        let p; \n
+        let theNumberOfA=0 \n
+        for(p=0; p<newStringedArray[0].length; p++){ \n
+        if(newStringedArray[0][p]==='a'){ \n
+        theNumberOfA+=1 \n
+        } \n
+        } \n
+        return theNumberOfA \n
         } newpar,
 
 There are a few nested conditions in the code. The first condition is one I added at the end, in case anyone entered 0 for n, which means that essentially there is no point in using the function to begin with. newpar,
@@ -114,13 +114,13 @@ The next part of the code is for when there is a remainder when n is divided by 
 
 The next solution was posted by Anthony Nandaa on the discussion board of hackerrank.com. I hope he does not mind that I am citing his work here. newpar,
 
-function repeatedString(s, n) { /n
-const counta = (str) => str.split('') /n
-.filter(c => c == 'a') /n
-.length /n
-const d = Math.floor(n / s.length) /n
-const r = n - (s.length * d) /n
-return d * counta(s) + counta(s.substr(0, r)) /n
+function repeatedString(s, n) { \n
+const counta = (str) => str.split('') \n
+.filter(c => c == 'a') \n
+.length \n
+const d = Math.floor(n / s.length) \n
+const r = n - (s.length * d) \n
+return d * counta(s) + counta(s.substr(0, r)) \n
 } newpar,
 
 https://www.hackerrank.com/challenges/repeated-string/forum?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup /anchor newpar,
@@ -143,44 +143,44 @@ I liked their example 'The teacher gapes at the mounds of exam pages lying befor
 
 This is my solution for the attack of the anagrams at the moment: newpar,
 
-function filteringAnagrams(anArray){ /n
+function filteringAnagrams(anArray){ \n
 
-let newArray=[] /n
-let a; /n
-for(a=0; a<anArray.length; a++){ /n
-newArray.push(anArray[a].split('').sort /n
-((a, b)=>{return a.localeCompare(b)})) /n
-} /n
+let newArray=[] \n
+let a; \n
+for(a=0; a<anArray.length; a++){ \n
+newArray.push(anArray[a].split('').sort \n
+((a, b)=>{return a.localeCompare(b)})) \n
+} \n
 
-let j; /n
-let anotherNewArray=[] /n
-for(j=0; j<newArray.length; j++){ /n
-let arrayWithoutWhiteSpace= newArray[j].filter(string=>{ /n
-return string !== '' /n
-}) /n
-anotherNewArray.push(arrayWithoutWhiteSpace) /n
-} /n
+let j; \n
+let anotherNewArray=[] \n
+for(j=0; j<newArray.length; j++){ \n
+let arrayWithoutWhiteSpace= newArray[j].filter(string=>{ \n
+return string !== '' \n
+}) \n
+anotherNewArray.push(arrayWithoutWhiteSpace) \n
+} \n
 
-let newNewArray=[] /n
-let h; /n
-for(h=0;h<anotherNewArray.length; h++){ /n
-if(!newNewArray.includes(anotherNewArray[h].join(''))){ /n
-newNewArray.push(anotherNewArray[h].join('')) /n
-} /n
-} /n
+let newNewArray=[] \n
+let h; \n
+for(h=0;h<anotherNewArray.length; h++){ \n
+if(!newNewArray.includes(anotherNewArray[h].join(''))){ \n
+newNewArray.push(anotherNewArray[h].join('')) \n
+} \n
+} \n
 
-let s; /n
-let arrayToSort=[] /n
-for(s=0; s<newNewArray.length; s++){ /n
-let findMatch=anArray.find(string=>{ /n
-if (string.split('').sort((a, b)=> /n
-{return a.localeCompare(b)}).join('')===newNewArray[s]) /n
-return string /n
-}) /n
-arrayToSort.push(findMatch) /n
-} /n
+let s; \n
+let arrayToSort=[] \n
+for(s=0; s<newNewArray.length; s++){ \n
+let findMatch=anArray.find(string=>{ \n
+if (string.split('').sort((a, b)=> \n
+{return a.localeCompare(b)}).join('')===newNewArray[s]) \n
+return string \n
+}) \n
+arrayToSort.push(findMatch) \n
+} \n
 
-let finalArray= arrayToSort.sort((a, b)=>{return a.localeCompare(b)}) /n
+let finalArray= arrayToSort.sort((a, b)=>{return a.localeCompare(b)}) \n
 return finalArray } newpar,
 
 Like the problem I wrote about in my last blog post, this is an exercise in for loops and also requires joining, splitting, sorting, pushing, finding, and filtering. If you do not get sick of those kinds of actions then you are probably pretty well-positioned for facing a lot of things in life — or at least I hope so, since that is the majority of what I have been doing lately. newpar,
@@ -206,69 +206,69 @@ In any case, after the last loop is complete, I sort one more time to get the un
 post_seven=Post.create(title: "The Case of the Missing Sock", paragraphs: "Lately, I have been preparing for technical interviews and coding challenges with some of the materials on hackerrank.com. This is about one of the warm-up challenges that they make available to users. It is a problem that says to write a function that, given the two parameters of an array of numbers and a number that is equal to the length of that array, will return the number of pairs (of socks, but it could very well be of anything else) in the array. It was mostly an exercise in using the for loop, but it gave me a chance to review a number of other things as well. newpar,
 This is a spoiler alert, because I will go ahead a give my solution below. There are probably a lot of ways to solve the problem, but if anyone finds the way I did it helpful then so much the better. I will print the code first and then explain it in steps. newpar,
 
-function sockMerchant(n, ar) { /n
-if(n<2){ /n
-return 0 /n
-} /n
-let arrayCount=0; /n
-let firstArraySorted=ar.sort(function(a, b){ /n
-return a-b} /n
-) /n
-let c; /n
-for (c=0; c<firstArraySorted.length; c++){ /n
-if (firstArraySorted[c] === firstArraySorted[firstArraySorted.length-1]){ /n
-if(firstArraySorted[c] === firstArraySorted[0]){ /n
-arrayCount+=1} /n
-} /n
-else { /n
-if (firstArraySorted[c] === firstArraySorted[c+1]){ /n
-arrayCount+=1 /n
-} /n
-} /n
-} /n
-if (arrayCount === firstArraySorted.length){ /n
-return (firstArraySorted.length)/2 /n
-} /n
-let theArrays=[] /n
-let i; /n
-for (i=0; i<n; i++){ /n
-let findMatches= ar.filter(number =>{ /n
-return number === parseInt(ar[i]) /n
-}) /n
-if(findMatches.length >1){ /n
-theArrays.push(findMatches)} /n
-} /n
-let sortedArrays= theArrays.sort() /n
-function changeArrays(anArray){ /n
-let newArray=[] /n
-let s; /n
-for (s=0; s<=anArray.length-1; s++){ /n
-if(s!==anArray.length-1){ /n
-if(anArray[s][0] !== anArray[s+1][0]){ /n
-newArray.push(anArray[s]) /n
-} /n
-} /n
-else { /n
-if(anArray[s][0] !==anArray[s-(anArray.length-1)][0]){ /n
-newArray.push(anArray[s]) /n
-} /n
-} /n
-} /n
-return newArray /n
-} /n
-let updatedArray= changeArrays(sortedArrays) /n
-let anotherUpdatedArray= updatedArray.map(array=>{ /n
-return parseInt(array.length/2) /n
-}) /n
-function sum(someArray){ /n
-let total=0 /n
-let a; /n
-for (a=0; a<=someArray.length-1; a++){ /n
-total+=someArray[a] /n
-} /n
-return total /n
-} /n
-return sum(anotherUpdatedArray) /n
+function sockMerchant(n, ar) { \n
+if(n<2){ \n
+return 0 \n
+} \n
+let arrayCount=0; \n
+let firstArraySorted=ar.sort(function(a, b){ \n
+return a-b} \n
+) \n
+let c; \n
+for (c=0; c<firstArraySorted.length; c++){ \n
+if (firstArraySorted[c] === firstArraySorted[firstArraySorted.length-1]){ \n
+if(firstArraySorted[c] === firstArraySorted[0]){ \n
+arrayCount+=1} \n
+} \n
+else { \n
+if (firstArraySorted[c] === firstArraySorted[c+1]){ \n
+arrayCount+=1 \n
+} \n
+} \n
+} \n
+if (arrayCount === firstArraySorted.length){ \n
+return (firstArraySorted.length)/2 \n
+} \n
+let theArrays=[] \n
+let i; \n
+for (i=0; i<n; i++){ \n
+let findMatches= ar.filter(number =>{ \n
+return number === parseInt(ar[i]) \n
+}) \n
+if(findMatches.length >1){ \n
+theArrays.push(findMatches)} \n
+} \n
+let sortedArrays= theArrays.sort() \n
+function changeArrays(anArray){ \n
+let newArray=[] \n
+let s; \n
+for (s=0; s<=anArray.length-1; s++){ \n
+if(s!==anArray.length-1){ \n
+if(anArray[s][0] !== anArray[s+1][0]){ \n
+newArray.push(anArray[s]) \n
+} \n
+} \n
+else { \n
+if(anArray[s][0] !==anArray[s-(anArray.length-1)][0]){ \n
+newArray.push(anArray[s]) \n
+} \n
+} \n
+} \n
+return newArray \n
+} \n
+let updatedArray= changeArrays(sortedArrays) \n
+let anotherUpdatedArray= updatedArray.map(array=>{ \n
+return parseInt(array.length/2) \n
+}) \n
+function sum(someArray){ \n
+let total=0 \n
+let a; \n
+for (a=0; a<=someArray.length-1; a++){ \n
+total+=someArray[a] \n
+} \n
+return total \n
+} \n
+return sum(anotherUpdatedArray) \n
 } newpar,
 
 
@@ -294,49 +294,49 @@ The main problem I encountered when handling moving my blog posts was in the for
 The way I ultimately ended up resolving formatting issues was to have an attribute called ‘paragraphs’ for every blog post and to provide specific markers within that long, long string to signal where I would like a new paragraph to start, where a video would be displayed, where an image would be displayed, where the text displayed was a block of code, etc. At the end of every portion of text where I wanted one paragraph to end and another one to begin I wrote ‘NEWPAR,’ except all in lowercase (I am typing it in scream case here to avoid formatting issues!). Then, on the front end, after fetching from the API and storing an array of posts in state in the parent component, I mapped over the posts to split at ‘NEWPAR,’ and display the text broken into paragraphs after filtering to delete the marker. Below is one example of this on the back end in the seed file. (Again, the uppercase is actually lowercase in my seed file. Also, disregard the pair of curly braces below.) newpar,
 While that kind of greeting may raise interesting existential questions, it is not very friendly. '{}' NEWPAR, newpar,
 Then, on the front end, I iterated over the seed information like this: newpar,
-expandingPost=()=>{ /n
-if (this.props.posts) { /n
-return this.props.posts.map(post=>{ /n
-let changeToArrays=post.paragraphs.split('NEWPAR,') /n
-let changeTheseArrays=changeToArrays.filter(description=>{ /n
-return description !=='NEWPAR' /n
+expandingPost=()=>{ \n
+if (this.props.posts) { \n
+return this.props.posts.map(post=>{ \n
+let changeToArrays=post.paragraphs.split('NEWPAR,') \n
+let changeTheseArrays=changeToArrays.filter(description=>{ \n
+return description !=='NEWPAR' \n
 })
-return changeTheseArrays.map(paragraph=>{ /n
-if (paragraph.includes('{')) { /n
-if (paragraph.includes('/N')) { /n
-let newParagraphArray= paragraph.split('/N') /n
-let newArray=newParagraphArray.filter(description=>{ /n
-return description !=='/N' /n
+return changeTheseArrays.map(paragraph=>{ \n
+if (paragraph.includes('{')) { \n
+if (paragraph.includes('\n')) { \n
+let newParagraphArray= paragraph.split('\n') \n
+let newArray=newParagraphArray.filter(description=>{ \n
+return description !=='\n' \n
 })
-return <div className='coding-in-blog'>{newArray.map(line=>{ /n
-return <p>{line}</p> /n
-})} /n
-</div> /n
+return <div className='coding-in-blog'>{newArray.map(line=>{ \n
+return <p>{line}</p> \n
+})} \n
+</div> \n
 } newpar,
-The second part of the coding example above includes a conditional for blocks of code. Since a lot of coding examples have curly braces in them, for now I decided to let the condition be that if there is a curly brace… handle the formatting of the text in the following way. The ‘/N’ marker signaled the start of a new line, to make the code more readable. The curly brace conditional also allowed me to assign a specific class name to coding examples to style them in a way that set them off from the rest of the text. newpar,
+The second part of the coding example above includes a conditional for blocks of code. Since a lot of coding examples have curly braces in them, for now I decided to let the condition be that if there is a curly brace… handle the formatting of the text in the following way. The ‘\n’ marker signaled the start of a new line, to make the code more readable. The curly brace conditional also allowed me to assign a specific class name to coding examples to style them in a way that set them off from the rest of the text. newpar,
 This methodology served me well later on when building the publications section of the blog, when I wanted to italicize the title of a publication and turn the name of a co-translator into a hyperlink. newpar,
-state={ /n
-expandBook: false, /n
-bookExpanded: [], /n
-books: [{title: 'Being Nude: The Skin of Images', /n
-... url: 'https://www.fordhampress.com/9780823256204/being-nude/', description: 'Being Nude: The Skin of Images /TITLE by Jean-Luc Nancy and Federico Ferrari is a Philosophy book that I co-translated with /TITLE Anne O'Byrne. /TITLE  It has nudity in different works of art as its subject matter and focuses on what these works reveal about intersubjectivity and identity. /TITLE'}, ... /n
+state={ \n
+expandBook: false, \n
+bookExpanded: [], \n
+books: [{title: 'Being Nude: The Skin of Images', \n
+... url: 'https://www.fordhampress.com/9780823256204/being-nude/', description: 'Being Nude: The Skin of Images /TITLE by Jean-Luc Nancy and Federico Ferrari is a Philosophy book that I co-translated with /TITLE Anne O'Byrne. /TITLE  It has nudity in different works of art as its subject matter and focuses on what these works reveal about intersubjectivity and identity. /TITLE'}, ... \n
 ]
 } newpar,
 The trailing dots in the example above are just to indicate parts of the books array that are not included in this blog. By separating the string of text with the ‘/TITLE’ marker, I was able to iterate over this information in a child component in a similar way to how I did with information that was coming from the seed file that I wanted formatted and styled in a particular way. newpar,
-italicizeTheTitle=()=>{ /n
-if (this.props.bookExpanded.description.includes('/TITLE')) { /n
-let newDescription= this.props.bookExpanded.description.split('/TITLE') /n
-let changeTheDescription=newDescription.filter(description=>{ /n
-return description !=='/TITLE' /n
-}) /n
-return <React.Fragment> /n
-<p> /n
-<i>{changeTheDescription[0]}</i> /n
-{changeTheDescription[1]} /n
-<a className='link' target='_blank' rel='noopener noreferrer' href='https://www.stonybrook.edu/commcms/philosophy/people/_faculty/byrne.php'>{changeTheDescription[2]}</a> /n
-{changeTheDescription[3]} /n
-</p> /n
-</React.Fragment> /n
+italicizeTheTitle=()=>{ \n
+if (this.props.bookExpanded.description.includes('/TITLE')) { \n
+let newDescription= this.props.bookExpanded.description.split('/TITLE') \n
+let changeTheDescription=newDescription.filter(description=>{ \n
+return description !=='/TITLE' \n
+}) \n
+return <React.Fragment> \n
+<p> \n
+<i>{changeTheDescription[0]}</i> \n
+{changeTheDescription[1]} \n
+<a className='link' target='_blank' rel='noopener noreferrer' href='https://www.stonybrook.edu/commcms/philosophy/people/_faculty/byrne.php'>{changeTheDescription[2]}</a> \n
+{changeTheDescription[3]} \n
+</p> \n
+</React.Fragment> \n
 } newpar,
 The function above is entitled ‘italicizeTheTitle’, because that is what I was originally writing the function to do. I wanted to italicize one small part of the string and had to find a way to set that portion of the text off from the rest of it without making it a whole new paragraph. Now that the function is taking care of other formatting issues, I will likely rename it to reflect that change. I will probably change the ‘/TITLE’ marker to reflect the expanded role that this marker is playing in the code, as well. newpar,
 So, here is my website: newpar,
@@ -358,7 +358,7 @@ While it hasn't been scientifically proven that adding a park to your collection
 ./Images/Belmont_Paul_Women's_Equality.jpg newpar,
 ./Images/Showpage_for_park.jpg newpar, 
 In addition to lectures from the last module I was in  and work that I did with with Guligena Aierken for a group project, I also got help from a couple of sources on the internet when I was trying to understand how local storage works: newpar,
-https://github.com/learn-co-students/nyc-dumbo-web-100719/tree/master/43-jwt-auth/ /anchor newpar,
+https://github.com/learn-co-students\nyc-dumbo-web-100719/tree/master/43-jwt-auth/ /anchor newpar,
 https://github.com/GAierken/Flatiron-Shopping-Frontend /anchor newpar,
 https://www.kirupa.com/html5/storing_and_retrieving_an_array_from_local_storage.htm /anchor newpar,
 https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage /anchor newpar,
@@ -366,64 +366,64 @@ https://www.youtube.com/embed/AUOzvFzdIk4 newpar,
 
 ComponentDidMount /heading newpar,
 The first time that localStorage comes into play in my app is when the component mounts. A fetch happens to load the parks from the API, and the user id, username, park collection, and token are all set to the values that are stored in local storage. That is so that if you leave the app, when you come back and the page reloads everything that was set when you logged in is not lost. The park collection is parsed when it is retrieved from storage, because localStorage only stores strings, and parsing it turns it back into an array. This is important, because it makes the data easier to iterate over for different purposes later on (for example to map and filter information). newpar,
-class App extends React.Component { /n
+class App extends React.Component { \n
 
-    state={ /n
+    state={ \n
 
-    parks: [], /n
+    parks: [], \n
 
-    parkClickedOn: [], /n
+    parkClickedOn: [], \n
 
-    isAParkExpanded: false, /n
+    isAParkExpanded: false, \n
 
-    parkCollection: [], /n
+    parkCollection: [], \n
 
-    userId: null, /n
+    userId: null, \n
 
-    username: "", /n
+    username: "", \n
 
-    token: null /n
+    token: null \n
 
-    } /n
-    componentDidMount=()=>{ /n
-    fetch('http://localhost:3000/parks') /n
-    .then(r => r.json()) /n
-    .then(parks => { /n
-    let parkCollectionParsed= /n 
-    JSON.parse(localStorage.getItem('theParkCollection')) /n
-    this.setState({ /n
-    parks: parks.data, /n
-    token: localStorage.token, /n
-    userId: localStorage.userId, /n
-    username: localStorage.username, /n
-    parkCollection: parkCollectionParsed /n
-    }) /n
-    }) /n
+    } \n
+    componentDidMount=()=>{ \n
+    fetch('http://localhost:3000/parks') \n
+    .then(r => r.json()) \n
+    .then(parks => { \n
+    let parkCollectionParsed= \n 
+    JSON.parse(localStorage.getItem('theParkCollection')) \n
+    this.setState({ \n
+    parks: parks.data, \n
+    token: localStorage.token, \n
+    userId: localStorage.userId, \n
+    username: localStorage.username, \n
+    parkCollection: parkCollectionParsed \n
+    }) \n
+    }) \n
     }
     } newpar,
     Logging In /heading newpar,
     The second time localStorage is set is when the user logs in. Here state is also set so that the DOM changes, and values are stored in localStorage so that if you leave the page they will still be there (otherwise whatever the values are that are set in componentDidMount will be there instead). These are values that you do not have access to until login, so that is why they are not set in componentDidMount - parts of the app can be accessed without logging in (such as the list of parks). After the page re-renders due to a change of state whatever values you are setting at the time of login are lost until you log out and log back in again. Unless you save to localStorage! Then there are less hoops to jump through to get what you want. Depending how much excitement you like in your life or how unnecessarily difficult you prefer for things to be, that may be a good thing. newpar,
         
-        setToken = (token, id) => { /n
-        localStorage.token = token; /n
-        localStorage.userId = id; /n
-        fetch(`http://localhost:3000/users/${id}`, { /n
-        headers: { /n
-        'Authorization': token /n
-        } /n
-        }) /n
-        .then(r => r.json()) /n
-        .then(user => { /n
-        this.setState({ /n
-        username: user.username, /n
-        token: token, /n
-        userId: id, /n
-        parkCollection: user.park_collections /n
-        }) /n
-        localStorage.setItem('theParkCollection', /n
-        JSON.stringify(user.park_collections)) /n
-        let the_username= user.username /n
-        localStorage.setItem('username', the_username) /n
+        setToken = (token, id) => { \n
+        localStorage.token = token; \n
+        localStorage.userId = id; \n
+        fetch(`http://localhost:3000/users/${id}`, { \n
+        headers: { \n
+        'Authorization': token \n
+        } \n
+        }) \n
+        .then(r => r.json()) \n
+        .then(user => { \n
+        this.setState({ \n
+        username: user.username, \n
+        token: token, \n
+        userId: id, \n
+        parkCollection: user.park_collections \n
+        }) \n
+        localStorage.setItem('theParkCollection', \n
+        JSON.stringify(user.park_collections)) \n
+        let the_username= user.username \n
+        localStorage.setItem('username', the_username) \n
         })
         } newpar,
 
@@ -431,67 +431,67 @@ class App extends React.Component { /n
     Logging Out /heading newpar,
     LocalStorage has to be cleared when a user logs out if you don't want information such as the username and a user's collection of National Parks to linger. The MDN documentation says that localStorage can be cleared with localStorage.clear(), but below I used .removeItem() for each piece of information. newpar,
     
-    logOut=()=>{ /n
-    localStorage.removeItem('userId') /n
-    localStorage.removeItem('token') /n
-    localStorage.removeItem('username') /n
-    localStorage.removeItem('theParkCollection') /n
-    localStorage.removeItem('parkCollectionForDisplay') /n
-    this.setState({ /n
-    userId: null, /n
-    token: null, /n
-    username: '', /n
-    parkCollection: [], /n
+    logOut=()=>{ \n
+    localStorage.removeItem('userId') \n
+    localStorage.removeItem('token') \n
+    localStorage.removeItem('username') \n
+    localStorage.removeItem('theParkCollection') \n
+    localStorage.removeItem('parkCollectionForDisplay') \n
+    this.setState({ \n
+    userId: null, \n
+    token: null, \n
+    username: '', \n
+    parkCollection: [], \n
     })
     } newpar,
     Everything Between the Beginning and the End /heading newpar,
     In between logging in and logging out, a lot of things can happen! Or, at least a couple things! newpar,
     https://www.youtube.com/embed/MznHdJReoeo newpar,
     Users can add or delete a park from their collection, and storage and state are set when that happens, in addition to the data being posted to the back end. LocalStorage has to be reset to make sure that if users leave the application without logging out their collection will reflect the changes they made when they come back. newpar,
-    addToParkCollection=(park)=> { /n
-        fetch('http://localhost:3000/park_collections', { /n
-        method: 'POST', /n
-        headers: { /n
-        'Content-type': 'application/json', /n
-        'Accepts': 'application/json' /n
-        }, /n
-        body: JSON.stringify({ /n
-        user_id: this.state.userId, /n
-        park_id: park.id /n
-        }) /n
-        }) /n
-        .then(r=>r.json()) /n
-        .then(theParkCollection => { /n
-        let thisParkCollection= /n
-        [...this.state.parkCollection, theParkCollection] /n
-        localStorage.setItem('theParkCollection', /n
-        JSON.stringify(thisParkCollection)) /n
-        this.setState({ /n
-        parkCollection: thisParkCollection /n
-        }) /n
+    addToParkCollection=(park)=> { \n
+        fetch('http://localhost:3000/park_collections', { \n
+        method: 'POST', \n
+        headers: { \n
+        'Content-type': 'application/json', \n
+        'Accepts': 'application/json' \n
+        }, \n
+        body: JSON.stringify({ \n
+        user_id: this.state.userId, \n
+        park_id: park.id \n
+        }) \n
+        }) \n
+        .then(r=>r.json()) \n
+        .then(theParkCollection => { \n
+        let thisParkCollection= \n
+        [...this.state.parkCollection, theParkCollection] \n
+        localStorage.setItem('theParkCollection', \n
+        JSON.stringify(thisParkCollection)) \n
+        this.setState({ \n
+        parkCollection: thisParkCollection \n
+        }) \n
         })
         } newpar,
         Something similar happens when the delete button is pushed. Here I filter to return a new array without the deleted park in it for the purpose of re-setting state. ParkCollection is an array of collections that are basically instances of a user having a park. They have an id, the user_id, and the park_id as attributes. A user has_many park_collections on the backend, and a park_collection belongs to one user. On the frontend, the array of collections is what will display as one collection of parks. Since only the park_id (not the park's name or description, for example) are stored in the park_collection, work has to be done to iterate through the array of parks that are fetched from the backend to pull out more information about the parks that belong to a user. Below, when I am using the .find() method, I am dealing with making a conversion between the park that is passed in as an argument to the deleteFromCollection function (which has information such as the name, description, url, id, etc. of the park) and the park_collections in parkCollection, which only have the id of the collection, the park_id, and the user_id. I need the id of the collection for specifying the url where the delete fetch has to be sent to effectively destroy my association with any given park. newpar,
         
-        deleteFromCollection=(park)=>{ /n
-        let newParkCollectionArray= /n
-        this.state.parkCollection.filter(the_park=>{ /n
-        return the_park.park_id !== park.id /n
-        }) /n
-        let thisParkCollection= /n
-        this.state.parkCollection.find(this_park_collection=>{ /n
-        return this_park_collection.park_id === park.id /n
-        }) /n
-        let parkCollectionsId= thisParkCollection.id /n
-        fetch(`http://localhost:3000/park_collections/${parkCollectionsId}`, { /n
-        method: 'DELETE'}) /n
-        .then(r=>r.json()) /n
-        .then(parkCollections =>{ /n
-        this.setState({ /n
-        parkCollection: newParkCollectionArray /n
-        }) /n
-        localStorage.setItem('theParkCollection', /n
-        JSON.stringify(newParkCollectionArray)) /n
+        deleteFromCollection=(park)=>{ \n
+        let newParkCollectionArray= \n
+        this.state.parkCollection.filter(the_park=>{ \n
+        return the_park.park_id !== park.id \n
+        }) \n
+        let thisParkCollection= \n
+        this.state.parkCollection.find(this_park_collection=>{ \n
+        return this_park_collection.park_id === park.id \n
+        }) \n
+        let parkCollectionsId= thisParkCollection.id \n
+        fetch(`http://localhost:3000/park_collections/${parkCollectionsId}`, { \n
+        method: 'DELETE'}) \n
+        .then(r=>r.json()) \n
+        .then(parkCollections =>{ \n
+        this.setState({ \n
+        parkCollection: newParkCollectionArray \n
+        }) \n
+        localStorage.setItem('theParkCollection', \n
+        JSON.stringify(newParkCollectionArray)) \n
         })
         } newpar,
         But don't worry, all you have to do is click a button to add the park again if you are having any regrets when it comes to your park planning preferences.
@@ -508,47 +508,47 @@ class App extends React.Component { /n
     ./Images/Featured_plant.jpg newpar,
     In order to display pictures under Featured Plant I added an array to the state on the parent App.js component called pictureClickedOn, and to display photographs of plants in Your Garden I added the array selectedPlants. Below is the code for setting the state on the initial page load, with the plants being fetched from the backend in the componentDidMount method. The selectedPlants and pictureClickedOn arrays are empty until a user selects a plant to be featured or added to their garden. newpar,
     
-    constructor(){ /n
-    super(); /n   
-    this.state = { /n
-    plants: [], /n
-    selectedPlants: [], /n
-    pictureClickedOn: [], /n
-    catButtonClicked: false /n
-    } /n
-    } /n
+    constructor(){ \n
+    super(); \n   
+    this.state = { \n
+    plants: [], \n
+    selectedPlants: [], \n
+    pictureClickedOn: [], \n
+    catButtonClicked: false \n
+    } \n
+    } \n
     
-    componentDidMount= () => { /n
-    fetch('http://localhost:3000/plants') /n
-    .then(r => r.json()) /n
-    .then(plantsArray => { /n
-    this.setState({ /n
-    plants: plantsArray, /n
-    }) /n
-    }) /n
+    componentDidMount= () => { \n
+    fetch('http://localhost:3000/plants') \n
+    .then(r => r.json()) \n
+    .then(plantsArray => { \n
+    this.setState({ \n
+    plants: plantsArray, \n
+    }) \n
+    }) \n
     } newpar,
 
     Adding arrays for the selectedPlants and pictureClickedOn allowed me to grab one plant from the plant selection to be featured and several plants from the choice of plants to be added to a garden. In the current state of the application, Your Garden and the featured plant do not persist, but that is something that eventually I would like to change. newpar,
     Since pictures can appear in three places on the page, I was running into issues when a plant was edited or deleted. The problem I had was that though doing a fetch to edit or delete a plant allowed me to update the plants array on the backend and front end, the selectedPlants and pictureClickedOn arrays were not automatically updating along with it. In order to fix this, I had to set the state for all of the arrays. This is the way I handled the delete action. newpar,
 
-    deleteOnClick= (plant) => { /n
-    const theUpdatedGarden= /n
-    this.state.selectedPlants.filter(the_clicked_plant => { /n
-        the_clicked_plant.id !== plant.id}); /n
-    const plantsId= this.state.pictureClickedOn.id /n
-    const theUpdatedFeaturedPlant= /n
-    plantsId === plant.id ? [] : /n
-    this.state.pictureClickedOn; /n
-    fetch(`http://localhost:3000/plants/${plant.id}`, { /n
-    method: 'DELETE' /n
-    }) /n
-    .then(r => r.json()) /n
-    .then((newArray) => { /n
-    this.setState({ /n
+    deleteOnClick= (plant) => { \n
+    const theUpdatedGarden= \n
+    this.state.selectedPlants.filter(the_clicked_plant => { \n
+        the_clicked_plant.id !== plant.id}); \n
+    const plantsId= this.state.pictureClickedOn.id \n
+    const theUpdatedFeaturedPlant= \n
+    plantsId === plant.id ? [] : \n
+    this.state.pictureClickedOn; \n
+    fetch(`http://localhost:3000/plants/${plant.id}`, { \n
+    method: 'DELETE' \n
+    }) \n
+    .then(r => r.json()) \n
+    .then((newArray) => { \n
+    this.setState({ \n
     plants: newArray,
-    pictureClickedOn: theUpdatedFeaturedPlant, /n
-    selectedPlants: theUpdatedGarden /n
-    }) /n
+    pictureClickedOn: theUpdatedFeaturedPlant, \n
+    selectedPlants: theUpdatedGarden \n
+    }) \n
     })
     } newpar,
 
@@ -559,40 +559,40 @@ class App extends React.Component { /n
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator /anchor newpar,
     The updateSubmit function was similar, but it required me to remove the plant that was being updated from the selectedPlants array before then using a spread operator to add the altered plant back into the array. The result was that I could alter the plant in Your Garden without duplication and without affecting the other plants in the garden. Below is my updateSubmit function, which runs when the submit button for the edit featured plant form is clicked on. newpar,
     
-    updateSubmit= (plant) => { /n
-    const theUpdatedName= plant.name /n
-    const theUpdatedImg= plant.img /n
-    const theUpdatedPlantInformation= plant.plant_information /n
-    const thePlants= /n
-    this.state.selectedPlants.filter(the_plant => { /n
-    the_plant.id !== plant.id}) /n
-    const gardenPlants= /n
-    this.state.selectedPlants.map(plant => { /n
-    return plant.id /n
-    }) /n
-    const gardenUpdate=  /n
-    gardenPlants.includes(plant.id) ? /n
-    [...thePlants, plant] : /n
-    this.state.selectedPlants /n
-    fetch(`http://localhost:3000/plants/${this.state.pictureClickedOn.id}`, { /n
-    method: 'PATCH', /n
-    headers: { /n
-    'Content-Type': 'application/json', /n
-    'Accept': 'application/json' /n
-    }, /n
-    body: JSON.stringify({ /n
-    name: theUpdatedName, /n
-    img: theUpdatedImg, /n
-    plant_information: theUpdatedPlantInformation /n
-    }) /n
-    }) /n
-    .then(r => r.json()) /n
-    .then((updatedPlants) => { /n
-    this.setState({ /n
-    plants: updatedPlants, /n
-    selectedPlants: gardenUpdate, /n
-    pictureClickedOn: plant /n
-    }) /n
+    updateSubmit= (plant) => { \n
+    const theUpdatedName= plant.name \n
+    const theUpdatedImg= plant.img \n
+    const theUpdatedPlantInformation= plant.plant_information \n
+    const thePlants= \n
+    this.state.selectedPlants.filter(the_plant => { \n
+    the_plant.id !== plant.id}) \n
+    const gardenPlants= \n
+    this.state.selectedPlants.map(plant => { \n
+    return plant.id \n
+    }) \n
+    const gardenUpdate=  \n
+    gardenPlants.includes(plant.id) ? \n
+    [...thePlants, plant] : \n
+    this.state.selectedPlants \n
+    fetch(`http://localhost:3000/plants/${this.state.pictureClickedOn.id}`, { \n
+    method: 'PATCH', \n
+    headers: { \n
+    'Content-Type': 'application/json', \n
+    'Accept': 'application/json' \n
+    }, \n
+    body: JSON.stringify({ \n
+    name: theUpdatedName, \n
+    img: theUpdatedImg, \n
+    plant_information: theUpdatedPlantInformation \n
+    }) \n
+    }) \n
+    .then(r => r.json()) \n
+    .then((updatedPlants) => { \n
+    this.setState({ \n
+    plants: updatedPlants, \n
+    selectedPlants: gardenUpdate, \n
+    pictureClickedOn: plant \n
+    }) \n
     }) 
     } newpar,
     I like this example of the spread operator from MDN: newpar,
@@ -604,46 +604,46 @@ class App extends React.Component { /n
     ./Images/Plants_to_cats_in_garden_and_plant_selection.jpg newpar,
     ./Images/Featured_plant.jpg newpar,
     I was happy to have them as visitors, but I didn't want them to dominate the garden for too long. So, I created two functions, one for replacing the plant image url with a cat image url by setting state (but not persisting this change to the backend, so that another way of chasing the cats away would be to just refresh the page) and another for fetching the plant information from the backend again, just as I did in componentDidMount, and setting state so that the plant images would once again be displayed. A third function toggles between these two functions depending on whether the catButtonClicked array in state is true or false. newpar,
-    changeToCats= () => { /n
-    const toCats= this.state.plants.map(plant => { /n
-    return {name: plant.name, /n
-    img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', /n
-    plant_information: plant.plant_information, /n
-    id: plant.id} /n
-    }) /n
-    const gardenCats= /n
-    this.state.selectedPlants.map(plant => { /n
-    return {name: plant.name, /n
-    img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', /n
-    plant_information: plant.plant_information, /n
-    id: plant.id} /n
-    }) /n
-    this.setState({ /n
-    plants: toCats, /n
-    selectedPlants: gardenCats, /n
-    pictureClickedOn: [], /n
-    catButtonClicked: true /n
-    }) /n
-    } /n
-    changeBacktoPlants= () => { /n
-    fetch('http://localhost:3000/plants') /n
-    .then(r => r.json()) /n
-    .then(plantsArray => { /n
-    this.setState({ /n
-    plants: plantsArray, /n
-    selectedPlants: [], /n
-    catButtonClicked: false /n
-    }) /n
-    }) /n
-    } /n
-    toggleCatButton= () => { /n
-    return !this.state.catButtonClicked ? /n
-    this.changeToCats() : this.changeBacktoPlants() /n
+    changeToCats= () => { \n
+    const toCats= this.state.plants.map(plant => { \n
+    return {name: plant.name, \n
+    img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', \n
+    plant_information: plant.plant_information, \n
+    id: plant.id} \n
+    }) \n
+    const gardenCats= \n
+    this.state.selectedPlants.map(plant => { \n
+    return {name: plant.name, \n
+    img: 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/774947_4327147871108_384379713_o.jpg?_nc_cat=103&_nc_ohc=19SjhUaMwJoAQnyA2-BXh_BOEWRN-KbtBT43IaYClPcG3JBIqlk26jkxg&_nc_ht=scontent-lga3-1.xx&oh=f24756f6eb4fe6328d41df13de4d4f6e&oe=5E98E72A', \n
+    plant_information: plant.plant_information, \n
+    id: plant.id} \n
+    }) \n
+    this.setState({ \n
+    plants: toCats, \n
+    selectedPlants: gardenCats, \n
+    pictureClickedOn: [], \n
+    catButtonClicked: true \n
+    }) \n
+    } \n
+    changeBacktoPlants= () => { \n
+    fetch('http://localhost:3000/plants') \n
+    .then(r => r.json()) \n
+    .then(plantsArray => { \n
+    this.setState({ \n
+    plants: plantsArray, \n
+    selectedPlants: [], \n
+    catButtonClicked: false \n
+    }) \n
+    }) \n
+    } \n
+    toggleCatButton= () => { \n
+    return !this.state.catButtonClicked ? \n
+    this.changeToCats() : this.changeBacktoPlants() \n
     } newpar,
     The toggleCatButton function was passed down as props to the NavBar.js component and is triggered as an onClick function when the button is pressed. This is in the render at the bottom of the component. newpar,
     
-    {this.props.catButtonClicked ? /n
-    <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Cats into Plants</button> /n
+    {this.props.catButtonClicked ? \n
+    <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Cats into Plants</button> \n
     : <button className='change-to-cats-button' onClick={this.props.toggleCatButton}>Turn Plants into Cats</button>} newpar,
 
     There is a ternary expression to indicate which button should display, one of them with the text being Turn Cats into Plants, the other Turn Plants into Cats. The inner text on the button is the only difference between the two. They are governed by the same function. newpar,
@@ -662,44 +662,44 @@ class App extends React.Component { /n
         When a user clicks on the Update this Monster button a form is generated like so, and when it is submitted the monster is updated in the database and on the page. newpar,
         ./Images/Monsters_lab_update_form.jpg newpar,
 
-        fetch('http://localhost:3000/monsters') /n
-        .then(r => r.json()) /n
-        .then(monstersArray => { /n
-        const theMonstersArray= monstersArray /n
-        let i=0 /n
-        let monsterSet= theMonstersArray.slice(i, i+50) /n
-        let firstSet= monsterSet.forEach(showAllMonsters) /n
+        fetch('http://localhost:3000/monsters') \n
+        .then(r => r.json()) \n
+        .then(monstersArray => { \n
+        const theMonstersArray= monstersArray \n
+        let i=0 \n
+        let monsterSet= theMonstersArray.slice(i, i+50) \n
+        let firstSet= monsterSet.forEach(showAllMonsters) \n
         }) newpar,
 
        This makes it so that only the first fifty monsters are displayed when the DOM content loads. A slice takes two arguments, the index number of where the slice should start and the index number of where the slice should end. The second argument is not inclusive, and index numbers begin at zero for the first element in an array. newpar,
        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice /anchor newpar,
         To make the forward button at the bottom of the page functional, the following worked (to an extent!): newpar,
         
-        let forwardButton= document.getElementById('forward') /n
-        forwardButton.addEventListener('click', (event) => { /n
-        i+=50 /n
-        let nextFifty= monstersArray.slice(i, i+50) /n
-        nextFifty.forEach(showAllMonsters) /n
+        let forwardButton= document.getElementById('forward') \n
+        forwardButton.addEventListener('click', (event) => { \n
+        i+=50 \n
+        let nextFifty= monstersArray.slice(i, i+50) \n
+        nextFifty.forEach(showAllMonsters) \n
         }) newpar,
 
         I added an event listener to the forward button so that when it is clicked, the next slice in the monstersArray is displayed. However, the issue is that the previous fifty monsters are still on the page…and that is too many monsters! I can't fight them all at once. It is too much. I also haven't worked on the backward arrow yet, so unfortunately there is no going back. Unless you refresh the page! Then you will be down to the first fifty again until you become overzealous enough to click the forward button. But this is a single-page application, so I wouldn't advice you to refresh the page to save your life. newpar,
         I will keep working on the arrow buttons and will write an update when I manage to make them work the way they are supposed to. In the meantime, I will backtrack a little to explain some of the code that I glossed over above. newpar,
         The showAllMonsters function loops through the array of monsters in the database to display the information there in an organized way on the page. Our instructor Eric warned us that using innerHTML could make us unnecessarily over-exposed to harm by all the dangerous people out there on the internet, so I got practice writing things line by line. This is the beginning of that function. We were learning JavaScript, so that is one of the reasons we were not editing the HTML file directly and instead were adding elements to the HTML through a JavaScript file. newpar,
 
-        function showAllMonsters(monsterObj){ /n
-        let aMonsterSpan= document.createElement('span') /n
-        let aMonsterName= document.createElement('h2') /n
-        aMonsterName.innerText= monsterObj.name /n
-        let aMonsterAge= document.createElement('li') /n
-        aMonsterAge.innerText= `${monsterObj.age} years old` /n
-        let aMonsterBio= document.createElement('p') /n
-        aMonsterBio.innerText= `Bio: ${monsterObj.description}` /n
-        let deleteMonsterButton= document.createElement('button') /n
-        deleteMonsterButton.innerText='Delete this monster' /n
-        let updateMonsterButton= document.createElement('button') /n
-        updateMonsterButton.innerText= 'Update this Monster' /n
-        aMonsterSpan.append(aMonsterName, aMonsterAge, /n 
-        aMonsterBio, deleteMonsterButton, updateMonsterButton) /n
+        function showAllMonsters(monsterObj){ \n
+        let aMonsterSpan= document.createElement('span') \n
+        let aMonsterName= document.createElement('h2') \n
+        aMonsterName.innerText= monsterObj.name \n
+        let aMonsterAge= document.createElement('li') \n
+        aMonsterAge.innerText= `${monsterObj.age} years old` \n
+        let aMonsterBio= document.createElement('p') \n
+        aMonsterBio.innerText= `Bio: ${monsterObj.description}` \n
+        let deleteMonsterButton= document.createElement('button') \n
+        deleteMonsterButton.innerText='Delete this monster' \n
+        let updateMonsterButton= document.createElement('button') \n
+        updateMonsterButton.innerText= 'Update this Monster' \n
+        aMonsterSpan.append(aMonsterName, aMonsterAge, \n 
+        aMonsterBio, deleteMonsterButton, updateMonsterButton) \n
         theMonsterContainer.append(aMonsterSpan)} newpar,
 
         theMonsterContainer is a div already written in the HTML we were given, and I captured it in a constant earlier on: newpar,
@@ -715,7 +715,7 @@ class App extends React.Component { /n
     post_two=Post.create(title: "Time and Greetings in a JavaScript Function", paragraphs: "This post is about one of my first experiences handling time in JavaScript while completing the Fns as First Class Data: Do Behavior lab on Learn.co. One of the directives of the lab was to create a function that, given a time entered by a user in 24-hour format, will return a greeting appropriate for the time of day. newpar,
     ./Images/Directions.jpg newpar,
     The lab also gives us a hint to use the .split() method and parseInt() to process the time entered: newpar,
-    ./Images/Note.jpg newpar,
+    ./Images\note.jpg newpar,
     I am going to focus just on the greet function in this blog, as it gave me plenty to think about and work on. In the words of Miracle Legion, 'Just say hello. It means a lot to me.' newpar,
     The Solution I Arrived At /heading newpar,
     First, here are two solutions that I eventually arrived at (with some code that I will discuss later commented out): newpar,
@@ -775,7 +775,7 @@ class App extends React.Component { /n
     ./Images/Splitting_with_k_results.jpg newpar,
     That might have been good for Halloween last week, but it is not exactly what I was looking for! Also, we might want to add items to the cart that do not have a k in them, and in that case this would also not do anything we want it to do. newpar,
     Ruby Doc tells us that we can split along white space, like this, if there is white space to serve as a delimiter: newpar,
-    ./Images/Nows_the_time.jpg newpar,
+    ./Images\nows_the_time.jpg newpar,
     Or, it tells us, we could split along each letter, like this: newpar,
     ./Images/Hello_split.jpg newpar,
     to give us this: newpar,
